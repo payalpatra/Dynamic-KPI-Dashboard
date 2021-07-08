@@ -9,11 +9,11 @@ function DashboardCard09() {
 
   const chartData = {
     labels: [
-      '12-01-2020', '01-01-2021', '02-01-2021',
-      '03-01-2021', '04-01-2021', '05-01-2021',
+      '2-01-2021', '03-01-2021', '04-01-2021',
+      '05-01-2021', '06-01-2021', '07-01-2021',
     ],
     datasets: [
-      // Light blue bars
+      // Light blue bars --> CAPEX
       {
         label: 'Stack 1',
         data: [
@@ -24,11 +24,11 @@ function DashboardCard09() {
         barPercentage: 0.66,
         categoryPercentage: 0.66,
       },
-      // Blue bars
+      // Blue bars --> Dividends
       {
         label: 'Stack 2',
         data: [
-          -4000, -2600, -5350, -4000, -7500, -2000,
+          4000, 2600, 5350, 4000, 7500, 2000,
         ],
         backgroundColor: tailwindConfig().theme.colors.indigo[200],
         hoverBackgroundColor: tailwindConfig().theme.colors.indigo[300],
@@ -41,15 +41,15 @@ function DashboardCard09() {
   return (
     <div className="flex flex-col col-span-full sm:col-span-6 bg-white shadow-lg rounded-sm border border-gray-200">
       <header className="px-5 py-4 border-b border-gray-100 flex items-center">
-        <h2 className="font-semibold text-gray-800">Sales VS Refunds</h2>
+        <h2 className="font-semibold text-gray-800">Capex vs Dividends</h2>
         <Info className="ml-2" containerClassName="min-w-80">
-          <div className="text-sm">Sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim.</div>
+         
         </Info>
       </header>
       <div className="px-5 py-3">
         <div className="flex items-start">
-          <div className="text-3xl font-bold text-gray-800 mr-2">+$6,796</div>
-          <div className="text-sm font-semibold text-white px-1.5 bg-yellow-500 rounded-full">-34%</div>
+          <div className="text-3xl font-bold text-gray-800 mr-2"></div>
+          <div className="text-sm font-semibold text-white px-1.5 bg-yellow-500 rounded-full"></div>
         </div>
       </div>
       {/* Chart built with Chart.js 3 */}

@@ -1,31 +1,43 @@
 import React, { useState, useEffect } from 'react';
-import Info from '../../utils/Info';
 import RealtimeChart from '../../charts/RealtimeChart';
 
 // Import utilities
 import { tailwindConfig, hexToRGB } from '../../utils/Utils';
 
-function DashboardCard05() {
+const apiKey = "5da61562c3b949418870439ca68d573f"
+const url = `https://api.twelvedata.com/time_series?symbol=CAP,EUR/USD,ETH/BTC:Huobi,RY:TSX&interval=1min&apikey=${apiKey}`
 
-  // IMPORTANT:
-  // Code below is for demo purpose only, and it's not covered by support.
-  // If you need to replace dummy data with real data,
-  // refer to Chart.js documentation: https://www.chartjs.org/docs/latest
+function DashboardCard05() {
+  let [data_, setdata] = useState({})
+
+  const fetchData = () => {
+    return fetch(url)
+      .then((response) => response.json())
+      .then((data) => console.log(""));
+  }
+  
+  useEffect(() => {
+    fetchData();
+    setdata(data)
+  }, []);
 
   // Fake real-time data
   const [counter, setCounter] = useState(0);
   const [increment, setIncrement] = useState(0);
   const [range, setRange] = useState(35);
-  
-  // Dummy data to be looped
-  const data = [
-    57.81, 57.75, 55.48, 54.28, 53.14, 52.25, 51.04, 52.49, 55.49, 56.87,
-    53.73, 56.42, 58.06, 55.62, 58.16, 55.22, 58.67, 60.18, 61.31, 63.25,
-    65.91, 64.44, 65.97, 62.27, 60.96, 59.34, 55.07, 59.85, 53.79, 51.92,
-    50.95, 49.65, 48.09, 49.81, 47.85, 49.52, 50.21, 52.22, 54.42, 53.42,
-    50.91, 58.52, 53.37, 57.58, 59.09, 59.36, 58.71, 59.42, 55.93, 57.71,
-    50.62, 56.28, 57.37, 53.08, 55.94, 55.82, 53.94, 52.65, 50.25,
+
+  // // Dummy data to be looped
+ let data = [
+    157.81, 157.75, 155.48, 154.28, 153.14, 152.25, 151.04, 152.49, 155.49, 156.87,
+    153.73, 156.42, 158.06, 155.62, 158.16, 155.22, 158.67, 160.18, 161.31, 163.25,
+    165.91, 164.44, 165.97, 162.27, 160.96, 159.34, 155.07, 159.85, 153.79, 151.92,
+    150.95, 149.65, 148.09, 149.81, 147.85, 149.52, 150.21, 152.22, 154.42, 153.42,
+    150.91, 158.52, 153.37, 157.58, 159.09, 159.36, 158.71, 159.42, 155.93, 157.71,
+    150.62, 156.28, 157.37, 53.08, 155.94, 155.82, 153.94, 152.65, 154.25
   ];
+
+
+
 
   const [slicedData, setSlicedData] = useState(data.slice(0, range));
 
@@ -60,7 +72,7 @@ function DashboardCard05() {
     }
     setSlicedLabels(([x, ...slicedLabels]) => [...slicedLabels, new Date()]);
     return () => setIncrement(0)
-  // eslint-disable-next-line react-hooks/exhaustive-deps
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [counter]);
 
   const chartData = {
@@ -68,7 +80,7 @@ function DashboardCard05() {
     datasets: [
       // Indigo line
       {
-        data: slicedData,
+        data: data_,
         fill: true,
         backgroundColor: `rgba(${hexToRGB(tailwindConfig().theme.colors.blue[500])}, 0.08)`,
         borderColor: tailwindConfig().theme.colors.indigo[500],
@@ -85,13 +97,10 @@ function DashboardCard05() {
   return (
     <div className="flex flex-col col-span-full sm:col-span-6 bg-white shadow-lg rounded-sm border border-gray-200">
       <header className="px-5 py-4 border-b border-gray-100 flex items-center">
-        <h2 className="font-semibold text-gray-800">Real Time Value</h2>
-        <Info className="ml-2" containerClassName="min-w-44">
-          <div className="text-sm text-center">Built with <a className="underline" href="https://www.chartjs.org/" target="_blank" rel="noreferrer">Chart.js</a></div>
-        </Info>
+        <h2 className="font-semibold text-gray-800">Company Share Price</h2>
+
       </header>
-      {/* Chart built with Chart.js 3 */}
-      {/* Change the height attribute to adjust the chart height */}
+    
       <RealtimeChart data={chartData} width={595} height={248} />
     </div>
   );

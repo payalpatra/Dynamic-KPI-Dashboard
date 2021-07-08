@@ -7,12 +7,12 @@ import { tailwindConfig } from '../../utils/Utils';
 function DashboardCard06() {
 
   const chartData = {
-    labels: ['Calls', 'Text', 'Video'],
+    labels: ['Satisfied', 'Neutral', 'Unsatisfied'],
     datasets: [
       {
-        label: 'Customer Service Type',
+        label: 'Customer Satisfaction',
         data: [
-          35, 30, 35,
+          20, 30, 60,
         ],
         backgroundColor: [
           tailwindConfig().theme.colors.indigo[500],
@@ -32,10 +32,9 @@ function DashboardCard06() {
   return (
     <div className="flex flex-col col-span-full sm:col-span-6 xl:col-span-4 bg-white shadow-lg rounded-sm border border-gray-200">
       <header className="px-5 py-4 border-b border-gray-100">
-        <h2 className="font-semibold text-gray-800">Customer Service Type</h2>
+        <h2 className="font-semibold text-gray-800">Customer Satisfaction</h2>
       </header>
-      {/* Chart built with Chart.js 3 */}
-      {/* Change the height attribute to adjust the chart height */}
+    
       <DoughnutChart data={chartData} width={389} height={260} />
     </div>
   );

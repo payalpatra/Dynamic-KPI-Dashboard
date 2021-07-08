@@ -60,7 +60,7 @@ function Dashboard() {
             {/* Cards */}
             <div className="grid grid-cols-12 gap-6">
              
-             {/* Bar chart (Direct vs Indirect) */}
+             {/* Bar chart Bugs) */}
               <DashboardCard04 />
               {/* Line chart (Real Time Value) */}
               <DashboardCard05 />
