@@ -1,8 +1,10 @@
 import React from 'react';
 import BarChart from '../../charts/BarChart01';
+import Pdf from "react-to-pdf";
 
 // Import utilities
 import { tailwindConfig } from '../../utils/Utils';
+const ref = React.createRef();
 
 function DashboardCard04() {
 
@@ -16,7 +18,7 @@ function DashboardCard04() {
       {
         label: 'Actual',
         data: [
-         1000, 1600, 900, 1300, 2450, 3700,
+          1000, 1600, 900, 1300, 2450, 3700,
         ],
         backgroundColor: tailwindConfig().theme.colors.blue[400],
         hoverBackgroundColor: tailwindConfig().theme.colors.blue[500],
@@ -38,13 +40,16 @@ function DashboardCard04() {
   };
 
   return (
-
-    <div className="flex flex-col col-span-full sm:col-span-6 bg-white shadow-lg rounded-sm border border-gray-200">
-      <header className="px-5 py-4 border-b border-gray-100">
-        <h2 className="font-semibold text-gray-800">Monthly Sales </h2>
-      </header>
-      <BarChart data={chartData} width={595} height={248} />
-    </div>
+    <Pdf targetRef={ref} filename="monthly-sales.pdf">
+      {({ toPdf }) =>
+        <div ref={ref} className="flex flex-col col-span-full sm:col-span-6 bg-white shadow-lg rounded-sm border border-gray-200">
+          <header type= "Button" style={{cursor: "pointer"}} onClick={toPdf} className="px-5 py-4 border-b border-gray-100">
+            <h2 className="font-semibold text-gray-800">Monthly Sales </h2>
+          </header>
+          <BarChart data={chartData} width={595} height={248} />
+        </div>
+      }
+    </Pdf>
   );
 }
 

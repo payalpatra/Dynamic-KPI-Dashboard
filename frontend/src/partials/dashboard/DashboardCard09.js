@@ -1,9 +1,11 @@
 import React from 'react';
 import Info from '../../utils/Info';
 import BarChart from '../../charts/BarChart02';
+import Pdf from "react-to-pdf";
 
 // Import utilities
 import { tailwindConfig } from '../../utils/Utils';
+const ref = React.createRef();
 
 function DashboardCard09() {
 
@@ -39,8 +41,11 @@ function DashboardCard09() {
   };
 
   return (
-    <div className="flex flex-col col-span-full sm:col-span-6 bg-white shadow-lg rounded-sm border border-gray-200">
-      <header className="px-5 py-4 border-b border-gray-100 flex items-center">
+    <Pdf targetRef={ref} filename="capex-dividends.pdf">
+    {({ toPdf }) =>
+
+    <div ref={ref} onClick={toPdf} className="flex flex-col col-span-full sm:col-span-6 bg-white shadow-lg rounded-sm border border-gray-200">
+      <header type="Button" style={{ cursor: "pointer" }} className="px-5 py-4 border-b border-gray-100 flex items-center">
         <h2 className="font-semibold text-gray-800">Capex vs Dividends</h2>
         <Info className="ml-2" containerClassName="min-w-80">
          
@@ -58,6 +63,8 @@ function DashboardCard09() {
         <BarChart data={chartData} width={595} height={248} />
       </div>
     </div>
+  }
+    </Pdf>
   );
 }
 

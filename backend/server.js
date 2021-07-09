@@ -4,8 +4,10 @@ const express = require("express");
 const cors = require("cors");
 const passport = require("passport");
 const cookieParser = require("cookie-parser");
+// const mongoose = require("mongoose");
 const session = require("express-session");
 const connectDB = require("./config.js/db");
+// const MongoDbStore = require("connect-mongo")(session);
 const userRoutes = require("./routes/userRoutes");
 
 // Initialize app

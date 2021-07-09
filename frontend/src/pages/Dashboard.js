@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 
+
 import Sidebar from '../partials/Sidebar';
 import Header from '../partials/Header';
 import WelcomeBanner from '../partials/dashboard/WelcomeBanner';
@@ -9,8 +10,6 @@ import DashboardCard04 from '../partials/dashboard/DashboardCard04';
 import DashboardCard05 from '../partials/dashboard/DashboardCard05';
 import DashboardCard06 from '../partials/dashboard/DashboardCard06';
 import DashboardCard09 from '../partials/dashboard/DashboardCard09';
-
-
 
 
 function Dashboard() {
@@ -43,33 +42,37 @@ function Dashboard() {
 
               {/* Right: Actions */}
               <div className="grid grid-flow-col sm:auto-cols-max justify-start sm:justify-end gap-2">
-            
+
                 {/* Datepicker built with flatpickr */}
                 <Datepicker />
                 {/* Add view button */}
-                <button className="btn bg-indigo-500 hover:bg-indigo-600 text-white">
-                    <svg className="w-4 h-4 fill-current opacity-50 flex-shrink-0" viewBox="0 0 16 16">
+
+                    <button  className="btn bg-indigo-500 hover:bg-indigo-600 text-white">
+                      <svg className="w-4 h-4 fill-current opacity-50 flex-shrink-0" viewBox="0 0 16 16">
                         <path d="M15 7H9V1c0-.6-.4-1-1-1S7 .4 7 1v6H1c-.6 0-1 .4-1 1s.4 1 1 1h6v6c0 .6.4 1 1 1s1-.4 1-1V9h6c.6 0 1-.4 1-1s-.4-1-1-1z" />
-                    </svg>
-                    <span className="hidden xs:block ml-2">Add view</span>
-                </button>                
+                      </svg>
+                      <span className="hidden xs:block ml-2">Add View</span>
+                    </button>
+                  
+  
               </div>
 
             </div>
 
             {/* Cards */}
             <div className="grid grid-cols-12 gap-6">
-             
-             {/* Bar chart Bugs) */}
+
+              {/* Bar chart (Monthly Sales) */}
+
               <DashboardCard04 />
-              {/* Line chart (Real Time Value) */}
+              {/* Line chart (Company Share Price) */}
               <DashboardCard05 />
-              {/* Doughnut chart () */}
+              {/* Doughnut chart (Customer Satisfaction) */}
               <DashboardCard06 />
-              {/* Stacked bar chart (Sales VS Refunds) */}
+              {/* Stacked bar chart (Capex vs Dividends) */}
               <DashboardCard09 />
-      
-       
+
+
             </div>
 
           </div>

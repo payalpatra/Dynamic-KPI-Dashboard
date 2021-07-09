@@ -1,55 +1,48 @@
-import React from 'react';
+import React, { useEffect } from 'react';
+import { useDispatch, useSelector } from "react-redux";
 
-import Image01 from '../../images/user-36-05.jpg';
-import Image02 from '../../images/user-36-06.jpg';
-import Image03 from '../../images/user-36-07.jpg';
-import Image04 from '../../images/user-36-08.jpg';
-import Image05 from '../../images/user-36-09.jpg';
+
+import { getUsers as listUsers } from "../../redux/actions/usersAction";
+
+import { getAuth as listAuth } from "../../redux/actions/authActions";
 
 function DashboardCard10() {
+  const dispatch = useDispatch();
 
-  const customers = [
-    {
-      id: '0',
-      image: Image01,
-      name: 'Alex Shatov',
-      email: 'alexshatov@gmail.com',
-      role: 'User',
-      userId: 'alex549',
-    },
-    {
-      id: '1',
-      image: Image02,
-      name: 'Philip Harbach',
-      email: 'philip.h@gmail.com',
-      role: 'Admin',
-      userId: 'philip3724',
-    },
-    {
-      id: '2',
-      image: Image03,
-      name: 'Mirko Fisuk',
-      email: 'mirkofisuk@gmail.com',
-      role: 'User',
-      userId: 'miks489',
-    },
-    {
-      id: '3',
-      image: Image04,
-      name: 'Olga Semklo',
-      email: 'olga.s@cool.design',
-      role: 'User',
-      userId: 'olga324',
-    },
-    {
-      id: '4',
-      image: Image05,
-      name: 'Burak Long',
-      email: 'longburak@gmail.com',
-      role: 'User',
-      userId: 'burak383',
-    },
-  ];
+  const getUsers = useSelector((state) => state.getUsers);
+  const { users } = getUsers;
+
+  const getAuth = useSelector((state) => state.getAuth);
+  const { auth, loading } = getAuth;
+
+  useEffect(() => {
+    dispatch(listUsers());
+    dispatch(listAuth());
+
+  }, [dispatch]);
+
+  const changeRole = async (e) => {
+
+    const id = e.target.value
+    const response = await fetch("/api/auth/updateRole", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+        Accept: "application/json",
+      },
+      body: JSON.stringify({
+        id
+      }),
+    }).then(Data => {
+      console.log(Data)
+    });
+
+
+  }
+
+
+  // console.log("AUTH", users.filter(user => user._id !== auth._id) )
+  const filteredUsers = users.filter(user => user._id !== auth._id)
 
   return (
     <div className="col-span-full xl:col-span-6 bg-white shadow-lg rounded-sm border border-gray-200">
@@ -76,38 +69,44 @@ function DashboardCard10() {
                 <th className="p-2 whitespace-nowrap">
                   <div className="font-semibold text-left">Role</div>
                 </th>
-                <th className="p-2 whitespace-nowrap">
+                {auth.role === "Admin" && (<th className="p-2 whitespace-nowrap">
                   <div className="font-semibold text-left">Edit Role</div>
-                </th>
-            
+                </th>)
+                }
               </tr>
             </thead>
             {/* Table body */}
             <tbody className="text-sm divide-y divide-gray-100">
               {
-                customers.map(customer => {
+                filteredUsers.map(user => {
                   return (
-                    <tr key={customer.id}>
+                    <tr key={user._id}>
                       <td className="p-2 whitespace-nowrap">
                         <div className="flex items-center">
                           <div className="w-10 h-10 flex-shrink-0 mr-2 sm:mr-3">
-                            <img className="rounded-full" src={customer.image} width="40" height="40" alt={customer.name} />
+                            <img className="rounded-full" src="https://i1.sndcdn.com/artworks-q2CRJXVVeKryjno9-O2sRwA-t500x500.jpg" width="40" height="40" alt={user.fullName} />
                           </div>
-                          <div className="font-medium text-gray-800">{customer.name}</div>
+                          <div className="font-medium text-gray-800">{user.fullName}</div>
                         </div>
                       </td>
                       <td className="p-2 whitespace-nowrap">
-                        <div className="text-left">{customer.email}</div>
+                        <div className="text-left">{user.email}</div>
                       </td>
                       <td className="p-2 whitespace-nowrap">
-                        <div className="text-left font-medium text-green-500">{customer.userId}</div>
+                        <div className="text-left font-medium text-green-500">{user._id}</div>
                       </td>
                       <td className="p-2 whitespace-nowrap">
-                        <div className="text-left ">{customer.role}</div>
+                        <div className="text-left ">{user.role}</div>
                       </td>
-                      <td className="p-2 whitespace-nowrap">
-                        <div className="text-left ">Dropdown</div>
-                      </td>
+
+                      {auth.role === "Admin" && (<td className="p-2 whitespace-nowrap">
+                        <div className="text-left ">
+                          <button value={user._id} onClick={changeRole} className="bg-indigo-500 hover:bg-blue-700 text-white font-bold py-1 px-2 rounded w-16" style={{ outline: "none" }}>
+                            {user.role === "User" ? "Admin" : "User"}
+                          </button>
+
+                        </div>
+                      </td>)}
                     </tr>
                   )
                 })

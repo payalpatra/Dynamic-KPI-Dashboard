@@ -1,8 +1,9 @@
 import React, { useState, useEffect } from 'react';
 import RealtimeChart from '../../charts/RealtimeChart';
-
+import Pdf from "react-to-pdf";
 // Import utilities
 import { tailwindConfig, hexToRGB } from '../../utils/Utils';
+const ref = React.createRef();
 
 const apiKey = "5da61562c3b949418870439ca68d573f"
 const url = `https://api.twelvedata.com/time_series?symbol=CAP,EUR/USD,ETH/BTC:Huobi,RY:TSX&interval=1min&apikey=${apiKey}`
@@ -15,7 +16,7 @@ function DashboardCard05() {
       .then((response) => response.json())
       .then((data) => console.log(""));
   }
-  
+
   useEffect(() => {
     fetchData();
     setdata(data)
@@ -27,7 +28,7 @@ function DashboardCard05() {
   const [range, setRange] = useState(35);
 
   // // Dummy data to be looped
- let data = [
+  let data = [
     157.81, 157.75, 155.48, 154.28, 153.14, 152.25, 151.04, 152.49, 155.49, 156.87,
     153.73, 156.42, 158.06, 155.62, 158.16, 155.22, 158.67, 160.18, 161.31, 163.25,
     165.91, 164.44, 165.97, 162.27, 160.96, 159.34, 155.07, 159.85, 153.79, 151.92,
@@ -95,14 +96,20 @@ function DashboardCard05() {
   };
 
   return (
-    <div className="flex flex-col col-span-full sm:col-span-6 bg-white shadow-lg rounded-sm border border-gray-200">
-      <header className="px-5 py-4 border-b border-gray-100 flex items-center">
-        <h2 className="font-semibold text-gray-800">Company Share Price</h2>
+    <Pdf targetRef={ref} filename="company-share.pdf">
+      {({ toPdf }) =>
 
-      </header>
-    
-      <RealtimeChart data={chartData} width={595} height={248} />
-    </div>
+        <div ref={ref} className="flex flex-col col-span-full sm:col-span-6 bg-white shadow-lg rounded-sm border border-gray-200">
+          <header type= "Button" style={{cursor: "pointer"}} onClick={toPdf} className="px-5 py-4 border-b border-gray-100 flex items-center">
+            <h2 className="font-semibold text-gray-800">Company Share Price</h2>
+
+          </header>
+
+          <RealtimeChart data={chartData} width={595} height={248} />
+        </div>
+
+      }
+    </Pdf>
   );
 }
 
