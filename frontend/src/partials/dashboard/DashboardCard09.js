@@ -7,20 +7,23 @@ import Pdf from "react-to-pdf";
 import { tailwindConfig } from '../../utils/Utils';
 const ref = React.createRef();
 
+
+// CAPEX V/S DIVIDENDS
 function DashboardCard09() {
+
+  const CapexData = [6200, 9200, 6600, 8800, 5200, 9200 ]
+  const DividendsData = [4000, 2600, 5350, 4000, 7500, 2000]
 
   const chartData = {
     labels: [
-      '2-01-2021', '03-01-2021', '04-01-2021',
-      '05-01-2021', '06-01-2021', '07-01-2021',
+      '12-01-2020', '01-01-2021', '02-01-2021',
+      '03-01-2021', '04-01-2021', '05-01-2021', '06-01-2021'
     ],
     datasets: [
       // Light blue bars --> CAPEX
       {
         label: 'Stack 1',
-        data: [
-          6200, 9200, 6600, 8800, 5200, 9200,
-        ],
+        data: CapexData,
         backgroundColor: tailwindConfig().theme.colors.indigo[500],
         hoverBackgroundColor: tailwindConfig().theme.colors.indigo[600],
         barPercentage: 0.66,
@@ -29,9 +32,7 @@ function DashboardCard09() {
       // Blue bars --> Dividends
       {
         label: 'Stack 2',
-        data: [
-          4000, 2600, 5350, 4000, 7500, 2000,
-        ],
+        data: DividendsData,
         backgroundColor: tailwindConfig().theme.colors.indigo[200],
         hoverBackgroundColor: tailwindConfig().theme.colors.indigo[300],
         barPercentage: 0.66,

@@ -33,7 +33,7 @@ function Signup() {
 
             // Fetch Api to post data
 
-            const response = await fetch("/api/auth/register", {
+            await fetch("/api/auth/register", {
                 method: "POST",
                 headers: {
                     "Content-Type": "application/json",

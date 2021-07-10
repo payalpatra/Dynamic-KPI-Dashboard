@@ -1,8 +1,24 @@
-import React from 'react';
+import React, { useEffect } from 'react';
+import { useDispatch, useSelector } from "react-redux";
+
+
+import { getAuth as listAuth } from "../../redux/actions/authActions";
+
+
+
 
 function WelcomeBanner() {
+  const dispatch = useDispatch();
 
-  const role = "User"
+  const getAuth = useSelector((state) => state.getAuth);
+  const { auth, loading } = getAuth;
+
+  useEffect(() => {
+
+    dispatch(listAuth());
+
+  }, [dispatch]);
+  const role = auth.role 
 
   return (
     <div className="relative bg-indigo-200 p-4 sm:p-6 rounded-sm overflow-hidden mb-8">
@@ -51,7 +67,7 @@ function WelcomeBanner() {
 
       {/* Content */}
       <div className="relative">
-        <h1 className="text-2xl md:text-3xl text-gray-800 font-bold mb-1">Capgemini {role} Dasboard 👋</h1>
+        <h1 className="text-2xl md:text-3xl text-gray-800 font-bold mb-1">Capgemini {role} Dashboard 👋</h1>
       </div>
 
     </div>

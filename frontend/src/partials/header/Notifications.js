@@ -4,6 +4,20 @@ import Transition from '../../utils/Transition';
 
 function Notifications() {
 
+  const months = ['', 'January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December']
+
+  let today = new Date();
+  let dd = String(today.getDate()).padStart(2, '0');
+  let mm = String(today.getMonth() + 1).padStart(2, '0'); //January is 0!
+  let yyyy = today.getFullYear();
+
+  today = mm + '/' + dd + '/' + yyyy;
+  const month = mm[0] === "0" ? parseInt(mm[1]) : parseInt(mm)
+
+
+  const currentDate = dd + " " + months[month] + " " + yyyy;
+
+
   const [dropdownOpen, setDropdownOpen] = useState(false);
 
   const trigger = useRef(null);
@@ -70,10 +84,10 @@ function Notifications() {
                 onClick={() => setDropdownOpen(!dropdownOpen)}
               >
                 <span className="block text-sm mb-2">📣 <span className="font-medium text-gray-800">Hello There ! </span> Welcome to Capgemini Dyanamic Dashboard.</span>
-                <span className="block text-xs font-medium text-gray-400">5 June, 2021</span>
+                <span className="block text-xs font-medium text-gray-400">{currentDate}</span>
               </Link>
             </li>
- 
+
           </ul>
         </div>
       </Transition>
