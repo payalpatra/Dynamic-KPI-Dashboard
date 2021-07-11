@@ -1,0 +1,3 @@
+export const GET_GRAPHS = "GET_GRAPHS";
+export const GET_GRAPHS_SUCCESS = "GET_GRAPHS_SUCCESS";
+export const GET_GRAPHS_FAIL = "GET_GRAPHS_FAIL";

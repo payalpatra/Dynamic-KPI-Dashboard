@@ -14,7 +14,8 @@ Chart.register(DoughnutController, ArcElement, TimeScale, Tooltip,);
 function DoughnutChart({
   data,
   width,
-  height
+  height,
+
 }) {
 
   const canvas = useRef(null);

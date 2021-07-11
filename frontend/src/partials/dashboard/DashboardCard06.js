@@ -1,25 +1,27 @@
 import React from 'react';
 import DoughnutChart from '../../charts/DoughnutChart';
 import Pdf from "react-to-pdf";
-import Dropdown from "../header/Dropdown"
+
 
 // Import utilities
 import { tailwindConfig } from '../../utils/Utils';
 const ref = React.createRef();
 
-
 // CUSTOMER SATISFACTION
 function DashboardCard06() {
 
-  // [satisfied , Neutral , Unsatisfied]
-  const customerSatisfaction = [60, 30, 20]
+  let customerSatisfaction = ["60", "30", "20"]
+  localStorage.setItem("customerSatisfaction", JSON.stringify(customerSatisfaction))
+  
 
-  const chartData = {
+  const Data = localStorage.getItem("customerSatisfaction")
+
+  let chartData = {
     labels: ['Satisfied', 'Neutral', 'Unsatisfied'],
     datasets: [
       {
         label: 'Customer Satisfaction',
-        data: customerSatisfaction,
+        data: Data,
         backgroundColor: [
           tailwindConfig().theme.colors.indigo[500],
           tailwindConfig().theme.colors.blue[400],
@@ -42,11 +44,6 @@ function DashboardCard06() {
           <header type="Button" style={{ cursor: "pointer" }} onClick={toPdf} className="px-5 py-4 border-b border-gray-100">
             <h2 className="font-semibold text-gray-800">Customer Satisfaction</h2>
           </header>
-          {/* <div className="flex px-5 border-b border-gray-100">
-               
-          </div> */}
-
-
           <DoughnutChart data={chartData} width={389} height={260} />
         </div>
       }

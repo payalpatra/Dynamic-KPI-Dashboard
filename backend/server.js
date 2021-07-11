@@ -7,6 +7,7 @@ const cookieParser = require("cookie-parser");
 const session = require("express-session");
 const connectDB = require("./config.js/db");
 const userRoutes = require("./routes/userRoutes");
+const employeeRoutes = require("./routes/employeeRoutes");
 const graphRoutes = require("./routes/graphRoutes");
 
 // Initialize app
@@ -26,14 +27,6 @@ app.use(
   })
 );
 app.set('trust proxy', 1);
-
-// Session Store
-// let mongoStore = new MongoDbStore({
-//   mongooseConnection: connection,
-//   collection: "sessions",
-// });
-
-
 
 // Session Configuration
 app.use(
@@ -62,7 +55,8 @@ app.use(passport.session({
 
 // Routes
 app.use("/api/auth", userRoutes);
-app.use("/api/graph", graphRoutes);
+app.use("/api/tasks", employeeRoutes);
+app.use("/api/graphs", graphRoutes);
 
 
 app.get("/", (req, res) => {

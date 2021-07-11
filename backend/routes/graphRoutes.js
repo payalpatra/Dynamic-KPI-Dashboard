@@ -4,9 +4,11 @@ const router = express.Router();
 const {
     addData,
     getData
-} = require("../controller/Graph/graphController");
+} = require("../controller/Graphs/GraphController");
 
-router.post("/addData", addData);
+// /api/graphs
+
+router.post("/addGraphData", addData);
 router.get("/graphData", getData);
 
 module.exports = router;

@@ -1,28 +1,46 @@
-import React from 'react';
-import BarChart from '../../charts/BarChart01';
+import React from "react";
+import BarChart from "../../charts/BarChart01";
 import Pdf from "react-to-pdf";
 
 // Import utilities
-import { tailwindConfig } from '../../utils/Utils';
+import { tailwindConfig } from "../../utils/Utils";
 const ref = React.createRef();
-
 
 // MONTHLY SALES
 function DashboardCard04() {
+  let Data1 = [1000, 1600, 900, 1300, 2450, 3700, 4000];
+  let Data2 = [4900, 2600, 5350, 4800, 5200, 4800, 5000];
 
-  const ActualSales = [1000, 1600, 900, 1300, 2450, 3700, 4000]
-  const TargetSales = [4900, 2600, 5350, 4800, 5200, 4800, 5000]
+  localStorage.setItem("ActualSales", JSON.stringify(Data1));
+  let ActualSales = localStorage.getItem("ActualSales");
+
+  localStorage.setItem("TargetSales", JSON.stringify(Data2));
+  let TargetSales = localStorage.getItem("TargetSales");
+
+  let labels = [
+    "12-01-2020",
+    "01-01-2021",
+    "02-01-2021",
+    "03-01-2021",
+    "04-01-2021",
+    "05-01-2021",
+    "06-01-2021",
+  ]
+
+  localStorage.setItem("labelData2", JSON.stringify(labels))
+  let labelData2 = localStorage.getItem("labelData2")
+
+
+
+
 
   const chartData = {
-    labels: [
-      '12-01-2020', '01-01-2021', '02-01-2021',
-      '03-01-2021', '04-01-2021', '05-01-2021', '06-01-2021'
-    ],
+    labels: JSON.parse(labelData2),
     datasets: [
       // Light blue bars
       {
-        label: 'Actual',
-        data: ActualSales,
+        label: "Actual",
+        data: JSON.parse(ActualSales),
         backgroundColor: tailwindConfig().theme.colors.blue[400],
         hoverBackgroundColor: tailwindConfig().theme.colors.blue[500],
         barPercentage: 0.66,
@@ -30,8 +48,8 @@ function DashboardCard04() {
       },
       // Blue bars
       {
-        label: 'Target',
-        data: TargetSales,
+        label: "Target",
+        data: JSON.parse(TargetSales),
         backgroundColor: tailwindConfig().theme.colors.indigo[500],
         hoverBackgroundColor: tailwindConfig().theme.colors.indigo[600],
         barPercentage: 0.66,
@@ -42,14 +60,22 @@ function DashboardCard04() {
 
   return (
     <Pdf targetRef={ref} filename="monthly-sales.pdf">
-      {({ toPdf }) =>
-        <div ref={ref} className="flex flex-col col-span-full sm:col-span-6 bg-white shadow-lg rounded-sm border border-gray-200">
-          <header type="Button" style={{ cursor: "pointer" }} onClick={toPdf} className="px-5 py-4 border-b border-gray-100">
+      {({ toPdf }) => (
+        <div
+          ref={ref}
+          className="flex flex-col col-span-full sm:col-span-6 bg-white shadow-lg rounded-sm border border-gray-200"
+        >
+          <header
+            type="Button"
+            style={{ cursor: "pointer" }}
+            onClick={toPdf}
+            className="px-5 py-4 border-b border-gray-100"
+          >
             <h2 className="font-semibold text-gray-800">Monthly Sales </h2>
           </header>
           <BarChart data={chartData} width={595} height={248} />
         </div>
-      }
+      )}
     </Pdf>
   );
 }

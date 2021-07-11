@@ -6,6 +6,7 @@ import {
 } from 'react-router-dom';
 
 
+// Styles
 import './css/style.scss';
 
 import { focusHandling } from 'cruip-js-toolkit';
@@ -19,6 +20,7 @@ import Signup from "./pages/Signup"
 
 function App() {
 
+
   const location = useLocation();
 
   useEffect(() => {
@@ -28,17 +30,19 @@ function App() {
     focusHandling('outline');
   }, [location.pathname]); // triggered on route change
 
+ 
+
   return (
     <>
       <Switch>
         <Route exact path="/">
           <Dashboard />
         </Route>
-        <Route exact path="/users"><Users/></Route>
-        <Route exact path="/login"><Login/></Route>
-        <Route exact path="/signup"><Signup/></Route>
-     
- 
+        <Route exact path="/users"><Users /></Route>
+        <Route exact path="/login"><Login /></Route>
+        <Route exact path="/signup"><Signup /></Route>
+
+
       </Switch>
     </>
   );
