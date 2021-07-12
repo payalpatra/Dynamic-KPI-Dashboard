@@ -3,10 +3,12 @@ const router = express.Router();
 
 const {
     addData,
-    getData
+    getData,
+    updateStatus
 } = require("../controller/Employees/EmployeesController");
 
 router.post("/addData", addData);
 router.get("/employeeData", getData);
+router.post("/updateStatus", updateStatus);
 
 module.exports = router;

@@ -83,7 +83,7 @@ function Notifications() {
                 to="#0"
                 onClick={() => setDropdownOpen(!dropdownOpen)}
               >
-                <span className="block text-sm mb-2">📣 <span className="font-medium text-gray-800">Hello There ! </span> Welcome to Capgemini Dyanamic Dashboard.</span>
+                <span className="block text-sm mb-2">📣 <span className="font-medium text-gray-800">Hello There ! </span> Welcome to Dyanamic Dashboard.</span>
                 <span className="block text-xs font-medium text-gray-400">{currentDate}</span>
               </Link>
             </li>

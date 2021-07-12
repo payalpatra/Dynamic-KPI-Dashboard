@@ -67,7 +67,7 @@ function WelcomeBanner() {
 
       {/* Content */}
       <div className="relative">
-        <h1 className="text-2xl md:text-3xl text-gray-800 font-bold mb-1">Capgemini {role} Dashboard 👋</h1>
+        <h1 className="text-2xl md:text-3xl text-gray-800 font-bold mb-1"> Welcome To Capgemini {role} Dashboard !</h1>
       </div>
 
     </div>

@@ -10,18 +10,17 @@ const ref = React.createRef();
 // CUSTOMER SATISFACTION
 function DashboardCard06() {
 
-  let customerSatisfaction = ["60", "30", "20"]
-  localStorage.setItem("customerSatisfaction", JSON.stringify(customerSatisfaction))
-  
+  // Local Storage
+  let Graphs = JSON.parse(localStorage.getItem("graphs"))
+  let customerSatisfaction = Graphs[6].customerSatisfaction
 
-  const Data = localStorage.getItem("customerSatisfaction")
 
   let chartData = {
     labels: ['Satisfied', 'Neutral', 'Unsatisfied'],
     datasets: [
       {
         label: 'Customer Satisfaction',
-        data: Data,
+        data: customerSatisfaction,
         backgroundColor: [
           tailwindConfig().theme.colors.indigo[500],
           tailwindConfig().theme.colors.blue[400],

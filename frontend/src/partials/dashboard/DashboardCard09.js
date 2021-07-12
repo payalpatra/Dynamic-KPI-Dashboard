@@ -11,32 +11,19 @@ const ref = React.createRef();
 // CAPEX V/S DIVIDENDS
 function DashboardCard09() {
 
-  let Data1 = [6200, 9200, 6600, 8800, 5200, 9200]
-  let Data2 = [4000, 2600, 5350, 4000, 7500, 2000]
-
-  let labels = [
-    '12-01-2020', '01-01-2021', '02-01-2021',
-    '03-01-2021', '04-01-2021', '05-01-2021', "06-01-2021"
-  ]
-
-
-  localStorage.setItem("CapexData", JSON.stringify(Data1))
-  let CapexData = localStorage.getItem("CapexData")
-
-  localStorage.setItem("DividendsData", JSON.stringify(Data2))
-  let DividendsData = localStorage.getItem("DividendsData")
-
-
-  localStorage.setItem("labelData", JSON.stringify(labels))
-  let labelData = localStorage.getItem("labelData")
+// Local Storage
+  let Graphs = JSON.parse(localStorage.getItem("graphs"))
+  let CapexData = Graphs[3].CapexData
+  let DividendsData = Graphs[4].DividendsData
+  let Clabels = Graphs[5].Clabels
 
   const chartData = {
-    labels: JSON.parse(labelData),
+    labels: Clabels,
     datasets: [
       // Light blue bars --> CAPEX
       {
         label: 'Stack 1',
-        data: JSON.parse(CapexData),
+        data: CapexData,
         backgroundColor: tailwindConfig().theme.colors.indigo[500],
         hoverBackgroundColor: tailwindConfig().theme.colors.indigo[600],
         barPercentage: 0.66,
@@ -45,7 +32,7 @@ function DashboardCard09() {
       // Blue bars --> Dividends
       {
         label: 'Stack 2',
-        data: JSON.parse(DividendsData),
+        data: DividendsData,
         backgroundColor: tailwindConfig().theme.colors.indigo[200],
         hoverBackgroundColor: tailwindConfig().theme.colors.indigo[300],
         barPercentage: 0.66,

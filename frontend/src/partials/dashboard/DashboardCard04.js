@@ -1,4 +1,6 @@
-import React from "react";
+import React, { useEffect, useState } from 'react';
+
+
 import BarChart from "../../charts/BarChart01";
 import Pdf from "react-to-pdf";
 
@@ -8,39 +10,42 @@ const ref = React.createRef();
 
 // MONTHLY SALES
 function DashboardCard04() {
-  let Data1 = [1000, 1600, 900, 1300, 2450, 3700, 4000];
-  let Data2 = [4900, 2600, 5350, 4800, 5200, 4800, 5000];
 
-  localStorage.setItem("ActualSales", JSON.stringify(Data1));
-  let ActualSales = localStorage.getItem("ActualSales");
-
-  localStorage.setItem("TargetSales", JSON.stringify(Data2));
-  let TargetSales = localStorage.getItem("TargetSales");
-
-  let labels = [
-    "12-01-2020",
-    "01-01-2021",
-    "02-01-2021",
-    "03-01-2021",
-    "04-01-2021",
-    "05-01-2021",
-    "06-01-2021",
-  ]
-
-  localStorage.setItem("labelData2", JSON.stringify(labels))
-  let labelData2 = localStorage.getItem("labelData2")
+  let [graphs, setGraphs] = useState([])
 
 
 
+  // let Data = [
+  //   { ActualSales: [1000, 1600, 900, 1300, 2450, 3700, 4000] },
+  //   { TargetSales: [4900, 2600, 5350, 4800, 5200, 4800, 5000] },
+  //   {
+  //     MLabels: ["12-01-2020", "01-01-2021", "02-01-2021", "03-01-2021", "04-01-2021", "05-01-2021", "06-01-2021"]
+  //   },
+  //   { CapexData: [6200, 9200, 6600, 8800, 5200, 9200] },
+  //   { DividendsData: [4000, 2600, 5350, 4000, 7500, 2000] },
+  //   {
+  //     Clabels: ['12-01-2020', '01-01-2021', '02-01-2021', '03-01-2021', '04-01-2021', '05-01-2021', "06-01-2021"]
+  //   },
+  //   { customerSatisfaction: ["60", "30", "20"] }
+  // ]
+
+  // // Local Storage
+  // localStorage.setItem("graphs", JSON.stringify(Data))
+  let Graphs = JSON.parse(localStorage.getItem("graphs"))
+  
+
+  let ActualSales = Graphs[0].ActualSales
+  let TargetSales = Graphs[1].TargetSales
+  let MLabels = Graphs[2].MLabels
 
 
   const chartData = {
-    labels: JSON.parse(labelData2),
+    labels: MLabels,
     datasets: [
       // Light blue bars
       {
         label: "Actual",
-        data: JSON.parse(ActualSales),
+        data: ActualSales,
         backgroundColor: tailwindConfig().theme.colors.blue[400],
         hoverBackgroundColor: tailwindConfig().theme.colors.blue[500],
         barPercentage: 0.66,
@@ -49,7 +54,7 @@ function DashboardCard04() {
       // Blue bars
       {
         label: "Target",
-        data: JSON.parse(TargetSales),
+        data: TargetSales,
         backgroundColor: tailwindConfig().theme.colors.indigo[500],
         hoverBackgroundColor: tailwindConfig().theme.colors.indigo[600],
         barPercentage: 0.66,

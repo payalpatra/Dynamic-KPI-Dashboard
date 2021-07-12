@@ -1,5 +1,5 @@
 
-let setData =
+let graphData =
     [
         { ActualSales: [1000, 1600, 900, 1300, 2450, 3700, 4000] },
         { TargetSales: [4900, 2600, 5350, 4800, 5200, 4800, 5000] },
@@ -15,8 +15,5 @@ let setData =
     ]
 
 
-localStorage.setItem("graphData", JSON.stringify(setData));
-let getData = JSON.parse(localStorage.getItem("graphData"))
 
-export default getData
 

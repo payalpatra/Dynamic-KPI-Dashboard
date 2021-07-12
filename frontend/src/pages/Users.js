@@ -6,6 +6,7 @@ import DashboardAvatars from '../partials/dashboard/DashboardAvatars';
 import Datepicker from '../partials/actions/Datepicker';
 import DashboardCard10 from '../partials/dashboard/DashboardCard10';
 
+
 function Users() {
     const [sidebarOpen, setSidebarOpen] = useState(false);
     return (
@@ -23,9 +24,7 @@ function Users() {
                 <main>
                     <div className="px-4 sm:px-6 lg:px-8 py-8 w-full max-w-9xl mx-auto">
 
-                        {/* Welcome banner */}
-                        {/* <WelcomeBanner /> */}
-
+                    
                         {/* Dashboard actions */}
                         <div className="sm:flex sm:justify-between sm:items-center mb-8">
 

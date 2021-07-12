@@ -4,7 +4,7 @@ const mongoose = require("mongoose");
 //         { ActualSales: [1000, 1600, 900, 1300, 2450, 3700, 4000] },
 //         { TargetSales: [4900, 2600, 5350, 4800, 5200, 4800, 5000] },
 //         {
-//             MLabels: ["12-01-2020", "01-01-2021", "02-01-2021", "03-01-2021", "04-01-2021", "05-01-2021", "06-01-2021",]
+//             MLabels: ["12-01-2020", "01-01-2021", "02-01-2021", "03-01-2021", "04-01-2021", "05-01-2021", "06-01-2021"]
 //         },
 //         { CapexData: [6200, 9200, 6600, 8800, 5200, 9200] },
 //         { DividendsData: [4000, 2600, 5350, 4000, 7500, 2000] },
@@ -15,35 +15,28 @@ const mongoose = require("mongoose");
 //     ]
 
 const graphDataSchema = mongoose.Schema({
-    ActualSales: {
-        type: Array,
+    type: {
+        type: String,
         required: false,
     },
-    TargetSales: {
-        type: Array,
+    Data1: {
+        type: String,
         required: false,
     },
-    MLabels: {
-        type: Array,
+    Data2: {
+        type: String,
         required: false,
     },
-    CapexData: {
-        type: Array,
+    Data3: {
+        type: String,
         required: false,
     },
 
-    DividendsData: {
-        type: Array,
+    labels: {
+        type: String,
         required: false,
     },
-    Clabels: {
-        type: Array,
-        required: false,
-    },
-    customerSatisfaction: {
-        type: Array,
-        required: false,
-    }
+
 
 });
 

@@ -1,11 +1,11 @@
 import * as actionTypes from "../constants/graphConstants";
 
-export const graphReducers = (state = { graphs: [] }, action) => {
+export const graphReducers = (state = JSON.parse(localStorage.getItem("graphs")), action) => {
     switch (action.type) {
         case actionTypes.GET_GRAPHS:
             return {
                 loading: true,
-                graphs: [],
+                graphs: state,
             };
         case actionTypes.GET_GRAPHS_SUCCESS:
             return {
