@@ -6,7 +6,7 @@ const {
   register,
   authUser,
   allUsers,
-  updateRole
+  updateRole,
 } = require("../controller/User/userController");
 
 // /api/auth
@@ -16,5 +16,6 @@ router.post("/register", register);
 router.get("/authUser", authUser);
 router.get("/allUsers", allUsers);
 router.post("/updateRole",updateRole );
+
 
 module.exports = router;

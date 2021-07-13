@@ -1,4 +1,8 @@
 import React, { useEffect } from 'react';
+import { useDispatch, useSelector } from "react-redux";
+
+import { getAuth as listAuth } from "./redux/actions/authActions"
+
 import {
   Switch,
   Route,
@@ -20,6 +24,16 @@ import Signup from "./pages/Signup"
 
 function App() {
 
+  const dispatch = useDispatch();
+
+  const getAuth = useSelector((state) => state.getAuth);
+  const { auth } = getAuth;
+
+  useEffect(() => {
+    dispatch(listAuth());
+  }, [dispatch]);
+
+
 
   const location = useLocation();
 
@@ -30,18 +44,26 @@ function App() {
     focusHandling('outline');
   }, [location.pathname]); // triggered on route change
 
- 
+
+
+  let home = "/dashboard"
+  let login = "/login"
+  let users = "/users"
+  let signup = "/signup"
+
+
+  console.log(auth)
 
   return (
     <>
       <Switch>
-        <Route exact path="/">
-          <Dashboard />
+        <Route exact path={home}>
+          {auth._id && (<Dashboard />)}
         </Route>
-        <Route exact path="/users"><Users /></Route>
-        <Route exact path="/login"><Login /></Route>
-        <Route exact path="/signup"><Signup /></Route>
-
+        <Route exact path={login}><Login /></Route>
+        <Route exact path="/"><Login /></Route>
+        <Route exact path={users}><Users /></Route>
+        <Route exact path={signup}><Signup /></Route>
 
       </Switch>
     </>

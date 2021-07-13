@@ -14,7 +14,7 @@ function DashboardCard10() {
   const getAuth = useSelector((state) => state.getAuth);
   const { auth } = getAuth;
 
-  
+
   useEffect(() => {
 
     dispatch(listAuth());
@@ -29,12 +29,30 @@ function DashboardCard10() {
         }
       })
       .then((jsonRes) => setTasks(jsonRes));
-  },[]);
+  }, []);
 
 
-const UpdateStatus = (e) =>{
-  console.log(e.target.value)
-}
+  const UpdateStatus = (e) => {
+
+    let id = e.target.value
+    const response = fetch("/api/tasks/updateStatus", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json"
+      },
+      body: JSON.stringify({
+        id
+      })
+    });
+
+    /// Response Error Handling or Inproper Data
+    if (response.status >= 200 && response.status <= 299) {
+      // setSuccess(true);
+    } else if (response.status >= 400) {
+      // setError(true)
+
+    }
+  }
 
   return (
     <div className="col-span-full xl:col-span-6 bg-white shadow-lg mt-10 rounded-sm border border-gray-200">

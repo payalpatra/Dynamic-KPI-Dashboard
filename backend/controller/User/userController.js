@@ -11,7 +11,6 @@ const login = async (req, res, next) => {
     else {
       req.logIn(user, (err) => {
         if (err) throw err;
-        // res.send("Successfully Authenticated");
         const session = req.session;
         session.cookie.push(req.session.passport);
         res.send(user);
@@ -75,10 +74,15 @@ const updateRole = async (req, res) => {
     }
 
   } catch (error) {
-    console.og(error);
+    console.log(error);
   }
 
+}
 
+const logout = async (req, res) => {
+  console.log(req.session)
+  req.session.passport.pop()
+  console.log(req.session)
 }
 
 module.exports = {
@@ -86,5 +90,5 @@ module.exports = {
   register,
   authUser,
   allUsers,
-  updateRole
+  updateRole,
 };

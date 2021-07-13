@@ -38,8 +38,8 @@ function UserMenu() {
       if (!dropdownOpen || dropdown.current.contains(target) || trigger.current.contains(target)) return;
       setDropdownOpen(false);
     };
-    document.addEventListener('click', clickHandler);
-    return () => document.removeEventListener('click', clickHandler);
+    // document.addEventListener('click', clickHandler);
+    // return () => document.removeEventListener('click', clickHandler);
   });
 
   // close if the esc key is pressed
@@ -48,8 +48,8 @@ function UserMenu() {
       if (!dropdownOpen || keyCode !== 27) return;
       setDropdownOpen(false);
     };
-    document.addEventListener('keydown', keyHandler);
-    return () => document.removeEventListener('keydown', keyHandler);
+    // document.addEventListener('keydown', keyHandler);
+    // return () => document.removeEventListener('keydown', keyHandler);
   });
 
   return (

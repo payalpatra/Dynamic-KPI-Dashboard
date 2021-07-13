@@ -73,7 +73,7 @@ function Signup() {
         <div className="h-full flex justify-center pt-40">
             <div className="w-full max-w-xs">
                 <form className="bg-white shadow-md rounded px-8 pt-6 pb-8 mb-4">
-                    <Link exact to="/">
+                    <Link to="/">
                         <img
                             src="https://www.capgemini.com/in-en/wp-content/themes/capgemini-komposite/assets/images/logo.svg"
                             className="w-40 h-10 ml-10 mb-4"

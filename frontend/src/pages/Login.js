@@ -1,9 +1,19 @@
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
+import { useDispatch, useSelector } from "react-redux";
+
+import { getAuth as listAuth } from "../redux/actions/authActions"
 import { Link } from "react-router-dom"
 
 
 function Loginn() {
-;
+    const dispatch = useDispatch();
+
+    const getAuth = useSelector((state) => state.getAuth);
+    const { auth } = getAuth;
+
+    useEffect(() => {
+        dispatch(listAuth());
+    }, [dispatch]);
 
     const [success, setSuccess] = useState(false)
     const [fail, setFail] = useState(false)
@@ -27,6 +37,8 @@ function Loginn() {
 
 
     const login = async (event) => {
+
+
         event.preventDefault();
 
         const { email, password } = data
@@ -47,9 +59,9 @@ function Loginn() {
                     password
                 }),
             }).then(Data => {
-                console.log(Data)
                 console.log(Data.status)
                 if (Data.status === 200) {
+                    console.log(Data)
                     setSuccess(true);
                 } else {
                     setFail(true)

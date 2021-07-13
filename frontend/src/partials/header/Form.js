@@ -1,9 +1,9 @@
 import React, { useState, useRef, useEffect } from 'react';
 
 import Transition from '../../utils/Transition.js';
-import Dashboard from "../../partials/dashboard/DashboardCard02"
+import Dashboard from "../../partials/dashboard/DashboardCard03"
 
-function Dropdown() {
+function Form() {
 
     const [searchOpen, setSearchOpen] = useState(false);
 
@@ -17,8 +17,8 @@ function Dropdown() {
             if (!searchOpen || searchContent.current.contains(target) || trigger.current.contains(target)) return;
             setSearchOpen(false);
         };
-        document.addEventListener('click', clickHandler);
-        return () => document.removeEventListener('click', clickHandler);
+        // document.addEventListener('click', clickHandler);
+        // return () => document.removeEventListener('click', clickHandler);
     });
 
     // close if the esc key is pressed
@@ -32,16 +32,16 @@ function Dropdown() {
     });
 
     return (
+
         <div>
             {/* Button */}
             <button
                 ref={trigger}
-                className={`w-3 h-4 flex items-center justify-center btn rounded-full text-white bg-indigo-500  ml-3 ${searchOpen && 'bg-indigo-200'}`}
+                className={`w-3 h-4 flex justify-center items-center w-9 h-9 rounded-full bg-white border border-gray-200 hover:border-gray-300 text-indigo-500 shadow-sm transition duration-150 ml-2 ${searchOpen && 'bg-indigo-200'}`}
                 onClick={() => { setSearchOpen(!searchOpen); setImmediate(() => searchInput.current.focus()); }}
                 aria-controls="search-modal"
             >
-
-                <svg className="w-4 h-4 fill-current opacity-50 flex-shrink-0" viewBox="0 0 16 16">
+                <svg className="w-4 h-4 fill-current" viewBox="0 0 16 16">
                     <path d="M15 7H9V1c0-.6-.4-1-1-1S7 .4 7 1v6H1c-.6 0-1 .4-1 1s.4 1 1 1h6v6c0 .6.4 1 1 1s1-.4 1-1V9h6c.6 0 1-.4 1-1s-.4-1-1-1z" />
                 </svg>
             </button>
@@ -76,18 +76,18 @@ function Dropdown() {
                     <form className="border-b border-gray-200">
                         <div className="relative">
                             <label htmlFor="modal-search" className="sr-only">Update Anything</label>
-                            <input id="modal-search" autoComplete="off" className="w-full border-0 focus:ring-transparent placeholder-gray-400 appearance-none ml-1 py-3 pl-10 pr-4" type="search" placeholder="Update KPIS …" ref={searchInput} />
+                            <input id="modal-search" className="w-full border-0 focus:ring-transparent placeholder-gray-400 appearance-none ml-1 py-3 pl-10 pr-4" type="search" placeholder="Assign Tasks..." ref={searchInput} />
                             <button className="absolute inset-0 right-auto group" type="submit" aria-label="Search">
-                                <img className="w-8 h-8 flex-shrink-0 fill-current text-gray-400 group-hover:text-gray-500 ml-2 mr-8" src="https://png.pngtree.com/png-vector/20190916/ourmid/pngtree-graph-icon-for-your-project-png-image_1731094.jpg" alt="" />
+                                <img className="w-8 h-8 flex-shrink-0 fill-current text-gray-400 group-hover:text-gray-500 ml-2 mr-8" src="https://image.flaticon.com/icons/png/512/906/906334.png" alt="" />
                             </button>
                         </div>
                     </form>
                     <div className="py-4 px-2" onFocus={() => setSearchOpen(true)} onBlur={() => setSearchOpen(false)}>
-                        {/* Recent searches */}
+
                         <div className="mb-0 last:mb-0">
                             <ul className="text-sm">
-                               
-                            <Dashboard/>
+
+                                <Dashboard />
                             </ul>
                         </div>
 
@@ -98,4 +98,4 @@ function Dropdown() {
     )
 }
 
-export default Dropdown;
+export default Form;

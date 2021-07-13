@@ -32,10 +32,9 @@ const getData = async (req, res) => {
 };
 
 const updateStatus = async (req, res) => {
-    const id = req.body
+    const { id } = req.body
     try {
         await Employee.deleteOne({ "_id": id });
-        res.json(Data);
     } catch (error) {
         console.error(error);
         res.status(500).json({ message: "Server Error" });
@@ -46,6 +45,6 @@ const updateStatus = async (req, res) => {
 module.exports = {
     addData,
     getData,
-    updateStatus 
+    updateStatus
 };
 
