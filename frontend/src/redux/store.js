@@ -4,12 +4,12 @@ import { composeWithDevTools } from "redux-devtools-extension";
 
 import { authReducer } from "./reducers/authReducers";
 import { usersReducer } from "./reducers/usersReducer"
-import { graphReducers } from "./reducers/graphReducers"
+import { messagesReducer } from "./reducers/messageReducers"
 
 const reducer = combineReducers({
   getAuth: authReducer,
   getUsers: usersReducer,
-  getgraphs: graphReducers
+  getMessages: messagesReducer
 });
 
 const middleware = [thunk];

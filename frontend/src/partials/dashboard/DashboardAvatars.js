@@ -1,4 +1,7 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
+import { useDispatch, useSelector } from "react-redux";
+
+import { getAuth as listAuth } from "../../redux/actions/authActions";
 import { Link } from 'react-router-dom';
 import User01 from '../../images/user-36-01.jpg';
 import User02 from '../../images/user-36-02.jpg';
@@ -7,6 +10,19 @@ import User04 from '../../images/user-36-04.jpg';
 import Modal from '../../partials/header/Form';
 
 function DashboardAvatars() {
+
+  const dispatch = useDispatch();
+
+  const getAuth = useSelector((state) => state.getAuth);
+  const { auth } = getAuth;
+
+
+  useEffect(() => {
+
+    dispatch(listAuth());
+
+  }, [dispatch]);
+
   return (
     <ul className="flex flex-wrap justify-center sm:justify-start mb-8 sm:mb-0 -space-x-3 -ml-px">
       <li>
@@ -30,9 +46,9 @@ function DashboardAvatars() {
         </Link>
       </li>
       <li>
+
         <button className="flex justify-center items-center w-9 h-9 rounded-full bg-white border border-gray-200 hover:border-gray-300 text-indigo-500 shadow-sm transition duration-150 ml-2">
           <span className="sr-only">Add new user</span>
-
           <Modal />
         </button>
       </li>

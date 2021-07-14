@@ -8,7 +8,7 @@ const session = require("express-session");
 const connectDB = require("./config.js/db");
 const userRoutes = require("./routes/userRoutes");
 const employeeRoutes = require("./routes/employeeRoutes");
-const graphRoutes = require("./routes/graphRoutes");
+const messageRoutes = require("./routes/messageRoutes");
 
 // Initialize app
 const app = express();
@@ -56,7 +56,7 @@ app.use(passport.session({
 // Routes
 app.use("/api/auth", userRoutes);
 app.use("/api/tasks", employeeRoutes);
-app.use("/api/graphs", graphRoutes);
+app.use("/api/message", messageRoutes);
 
 
 

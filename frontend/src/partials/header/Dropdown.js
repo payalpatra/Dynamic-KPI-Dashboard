@@ -76,7 +76,7 @@ function Dropdown() {
                     <form className="border-b border-gray-200">
                         <div className="relative">
                             <label htmlFor="modal-search" className="sr-only">Update Anything</label>
-                            <input id="modal-search" autoComplete="off" className="w-full border-0 focus:ring-transparent placeholder-gray-400 appearance-none ml-1 py-3 pl-10 pr-4" type="search" placeholder="Update KPIS …" ref={searchInput} />
+                            <input id="modal-search" className="w-full border-0 focus:ring-transparent placeholder-gray-400 appearance-none ml-1 py-3 pl-10 pr-4" type="search" placeholder="Update KPIS …" ref={searchInput} />
                             <button className="absolute inset-0 right-auto group" type="submit" aria-label="Search">
                                 <img className="w-8 h-8 flex-shrink-0 fill-current text-gray-400 group-hover:text-gray-500 ml-2 mr-8" src="https://png.pngtree.com/png-vector/20190916/ourmid/pngtree-graph-icon-for-your-project-png-image_1731094.jpg" alt="" />
                             </button>

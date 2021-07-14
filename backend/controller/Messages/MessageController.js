@@ -1,17 +1,21 @@
-const graphData = require("../../models/graphData");
+const Message = require("../../models/Message");
 
 const addData = async (req, res) => {
-    const { type, Data1, Data2, Data3 } = req.body
-    let labels = '["12-01-2020", "01-01-2021", "02-01-2021", "03-01-2021", "04-01-2021", "05-01-2021", "06-01-2021"]'
+    const { message, name } = req.body
 
+    var today = new Date();
+    var dd = String(today.getDate()).padStart(2, '0');
+    var mm = String(today.getMonth() + 1).padStart(2, '0'); 
+    var yyyy = today.getFullYear();
+
+    today = mm + '-' + dd + '-' + yyyy;
+    let createdAt = today
 
     try {
-        const newData = new graphData({
-            type: type,
-            Data1: Data1,
-            Data2: Data2,
-            Data3: Data3,
-            labels: labels,
+        const newData = new Message({
+            message: message,
+            name: name,
+            createdAt: createdAt,
         });
 
         await newData.save();
@@ -25,7 +29,7 @@ const addData = async (req, res) => {
 
 const getData = async (req, res) => {
     try {
-        const Data = await graphData.find({});
+        const Data = await Message.find({});
         res.json(Data);
     } catch (error) {
         console.error(error);

@@ -61,7 +61,7 @@ function UserMenu() {
         onClick={() => setDropdownOpen(!dropdownOpen)}
         aria-expanded={dropdownOpen}
       >
-        <Link to="/">
+        <Link to="/dashboard">
           <img className="w-8 h-8 rounded-full" src={UserAvatar} width="32" height="32" alt="User" />
         </Link>
         <div className="flex items-center truncate">

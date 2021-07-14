@@ -17,6 +17,7 @@ function Loginn() {
 
     const [success, setSuccess] = useState(false)
     const [fail, setFail] = useState(false)
+    const [homeButton , setHome] = useState(false)
 
 
     const [data, setData] = useState({
@@ -63,6 +64,7 @@ function Loginn() {
                 if (Data.status === 200) {
                     console.log(Data)
                     setSuccess(true);
+                    setHome(true);
                 } else {
                     setFail(true)
                 }
@@ -102,7 +104,7 @@ function Loginn() {
                             onChange={InputEvent}
                             placeholder="Enter Your Email" />
                     </div>
-                    <div className="mb-6">
+                    <div className="mb-2">
                         <label className="block text-gray-700 text-sm font-bold mb-2" htmlFor="password">
                             Password
                         </label>
@@ -116,12 +118,21 @@ function Loginn() {
                         {success === true && <p className="text-green-500 text-xs ">You Are Logged In </p>}
                         {fail === true && <p className="text-red-500 text-xs ">Something went wrong </p>}
                     </div>
-                    <div className="flex justify-center ">
-                        <button onClick={login} className="bg-indigo-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline" type="button">
+                    <div className="flex justify-center mb-3 ">
+                        {homeButton === false ? (<button onClick={login} className="bg-indigo-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline" type="button">
                             Log In
-                        </button>
-
+                        </button>) : (<Link to = "/dashboard" className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline" >
+                           Go To Home
+                        </Link>)}
                     </div>
+
+                    <div className="flex flex-row align-center justify-center mb-1 ">
+                        <p className="align-center text-xs mt-1 justify-center mr-1">Dont have an account ?
+                            <Link className="bg-gray-500 hover:bg-gray-700 px-2 ml-1 text-xs rounded focus:outline-none focus:shadow-outline text-white font-normal p-1" to="/signup">Sign Up</Link>
+                        </p>
+                    </div>
+
+
                 </form>
             </div>
         </div>

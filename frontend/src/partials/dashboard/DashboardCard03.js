@@ -39,21 +39,21 @@ function DashboardCard03() {
 
         if (!employee || !task || !deadline) {
             setFailure(true);
+        }else {
+            await fetch("/api/tasks/addData", {
+                method: "POST",
+                headers: {
+                    "Content-Type": "application/json",
+                    Accept: "application/json",
+                },
+                body: JSON.stringify({
+                    employee, task, deadline
+                }),
+            }).then((Data) => {
+                console.log(Data);
+                setSuccess(true);
+            });
         }
-
-        await fetch("/api/tasks/addData", {
-            method: "POST",
-            headers: {
-                "Content-Type": "application/json",
-                Accept: "application/json",
-            },
-            body: JSON.stringify({
-                employee, task, deadline
-            }),
-        }).then((Data) => {
-            console.log(Data);
-            setSuccess(true);
-        });
 
 
         setInterval(function () {
@@ -69,7 +69,7 @@ function DashboardCard03() {
         console.log(data);
     };
 
-    return (
+    return (auth.role === "Admin" &&
         <div className="col-span-full xl:col-span-12 pl-8 pr-8 lg:col-span-12 bg-white shadow-lg rounded-sm border border-gray-200">
             <form className="bg-white overflow-x-auto shadow-md rounded px-8 pt-6 pb-8 mb-4">
                 <div className="mb-2">
@@ -85,7 +85,7 @@ function DashboardCard03() {
                         onChange={InputEvent}
                         placeholder="Employee Name"
                         required
-                        autoComplete="off"
+
                     />
                 </div>
                 <div className="mb-2">
@@ -99,7 +99,6 @@ function DashboardCard03() {
                         value={data.task}
                         onChange={InputEvent}
                         placeholder="Task"
-                        autoComplete="off"
                         required
                     />
                 </div>
@@ -114,7 +113,6 @@ function DashboardCard03() {
                         value={data.deadline}
                         onChange={InputEvent}
                         placeholder="19 July"
-                        autoComplete="off"
                         required
                     />
                 </div>

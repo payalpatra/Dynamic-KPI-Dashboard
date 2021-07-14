@@ -19,6 +19,9 @@ const login = async (req, res, next) => {
   })(req, res, next);
 };
 
+
+
+
 const register = async (req, res) => {
   const { fullName, email, password } = req.body;
 
@@ -79,11 +82,8 @@ const updateRole = async (req, res) => {
 
 }
 
-const logout = async (req, res) => {
-  console.log(req.session)
-  req.session.passport.pop()
-  console.log(req.session)
-}
+
+
 
 module.exports = {
   login,
@@ -91,4 +91,5 @@ module.exports = {
   authUser,
   allUsers,
   updateRole,
+
 };
