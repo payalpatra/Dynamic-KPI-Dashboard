@@ -17,7 +17,7 @@ function Loginn() {
 
     const [success, setSuccess] = useState(false)
     const [fail, setFail] = useState(false)
-    const [homeButton , setHome] = useState(false)
+    const [homeButton, setHome] = useState(false)
 
 
     const [data, setData] = useState({
@@ -46,8 +46,6 @@ function Loginn() {
         if (!email || !password) {
             setFail(true)
         } else {
-
-
             // Fetch Api to post data
             const response = await fetch("/api/auth/login", {
                 method: "POST",
@@ -60,15 +58,16 @@ function Loginn() {
                     password
                 }),
             }).then(Data => {
-                console.log(Data.status)
-                if (Data.status === 200) {
-                    console.log(Data)
+                dispatch(listAuth());
+                console.log(auth.role)
+                if (Data.status === 200 && auth.role !== undefined) {
                     setSuccess(true);
                     setHome(true);
                 } else {
                     setFail(true)
                 }
             });
+            console.log(response)
         }
 
 
@@ -121,8 +120,8 @@ function Loginn() {
                     <div className="flex justify-center mb-3 ">
                         {homeButton === false ? (<button onClick={login} className="bg-indigo-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline" type="button">
                             Log In
-                        </button>) : (<Link to = "/dashboard" className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline" >
-                           Go To Home
+                        </button>) : (<Link to="/dashboard" className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline" >
+                            Go To Home
                         </Link>)}
                     </div>
 

@@ -10,6 +10,8 @@ import { getMessages as listMessages } from "../../redux/actions/messageActions"
 
 
 function DashboardCard07() {
+    const [succes, setSuccess] = useState(true);
+
 
     const dispatch = useDispatch();
 
@@ -18,7 +20,9 @@ function DashboardCard07() {
 
 
     const getMessages = useSelector((state) => state.getMessages);
-    const { messages } = getMessages;
+    const { messages, loading, error } = getMessages;
+
+
 
 
     useEffect(() => {
@@ -26,12 +30,9 @@ function DashboardCard07() {
         dispatch(listAuth());
     }, [dispatch]);
 
-    const [success, setSuccess] = useState(false);
-    const [failure, setFailure] = useState(false);
 
     const [Message, setMessage] = useState({
         "message": "",
-        "name": auth.fullName,
     });
 
 
@@ -48,79 +49,57 @@ function DashboardCard07() {
         if (event.keyCode === 13) {
             event.preventDefault();
             createMessage(event)
-
         }
     };
-
-    console.log(messages)
 
 
     const getMessageDetails = () => {
 
-        const { message, name } = Message;
-        console.log(Message);
+        const MESSAGE = {
+            "message": Message.message,
+            "name": auth.fullName,
+        }
+        console.log(MESSAGE)
 
-        if (!name || !message) {
-            setFailure(true)
+        if (!MESSAGE.name || !MESSAGE.message) {
+            setMessage({
+                "message": "",
+            })
 
         } else {
+            console.log("It works but not")
+            const response = fetch("/api/message/addMessage", {
+                method: "POST",
+                headers: {
+                    "Content-Type": "application/json"
+                },
+                body: JSON.stringify(MESSAGE)
+            }).then((Data) => {
+                console.log(Data)
+                if (Data) {
+                    dispatch(listMessages())
+                } else {
 
-            // const response = fetch("/api/message/messages", {
-            //     method: "POST",
-            //     headers: {
-            //         "Content-Type": "application/json"
-            //     },
-            //     body: JSON.stringify({
-            //         name, message
-            //     })
-            // });
-
-            /// Response Error Handling or Inproper Data
-            // if (response.status >= 200 && response.status <= 299) {
-            //     setSuccess(true);
-            // } else if (response.status >= 400) {
-
-            // }
-
-
-            // Form Validation 
-            if (failure === true) {
-
-                setFailure(false)
-                setSuccess(true);
-            } else if (success === true) {
-                setSuccess(true);
-
-            }
+                    setSuccess(false)
+                }
+            });
 
             /// Clearing The Form Data 
             setMessage({
                 "message": "",
-                "name": ""
             })
-
-
-            // console.log(response)
+            console.log(response)
         }
-
 
     }
 
     const createMessage = (e) => {
         e.preventDefault();
         getMessageDetails()
-        setInterval(function () {
-            setSuccess(false);
-            setFailure(false);
-        }, 2000);
-
-
     }
 
-
-
-
-    return (
+    // auth.role !== undefined &&
+    return (auth.role !== undefined &&
         <div className="col-span-full xl:col-span-6  bg-white shadow-lg rounded-sm border border-gray-200">
             <div className="flex p:2 sm:p-6 justify-between flex flex-col">
 
@@ -153,30 +132,48 @@ function DashboardCard07() {
                     </div>
                 </div>
                 <div id="messages" className="flex flex-col space-y-4 p-3 overflow-y-auto scrollbar-thumb-blue scrollbar-thumb-rounded scrollbar-track-blue-lighter scrollbar-w-2 scrolling-touch">
-                    <div className="chat-message">
-                        <div className="flex items-end">
-                            <div className="flex flex-col space-y-2 text-xs max-w-xs mx-2 order-2 items-start">
-                                <div>
-                                    <span>Sambid Kumar Patra</span>
-                                    <span className="px-4 py-2 rounded-lg inline-block rounded-bl-none bg-gray-300 text-gray-600">Can be verified on any platform using docker</span></div>
+                    {loading ? (
+                        <h2>Loading...</h2>
+                    ) : error ? (
+                        <h2>{error}</h2>
+                    ) : (
+                        messages.map((message) => message.name === auth.fullName ? (
+                            <div className="chat-message">
+                                <div className="flex items-end justify-end">
+                                    <div className="flex flex-col space-y-1 text-xs max-w-xs mx-2 order-1 items-end">
+                                        <div className="text-xs text-gray-500">
+                                            <span className="text-xs text-gray-500" >{message.name}</span>
+                                        </div>
+                                        <div className="flex items-end flex-col">
+                                            <span className="px-4 text-sm  py-2 rounded-lg inline-block rounded-br-none bg-blue-600 text-white">{message.message}</span>
+                                            <span className="text-xs mr-2 text-gray-500">{(message.createdAt)}</span>
+                                        </div>
+                                    </div>
+                                    <img src="https://images.unsplash.com/photo-1590031905470-a1a1feacbb0b?ixlib=rb-1.2.1&amp;ixid=eyJhcHBfaWQiOjEyMDd9&amp;auto=format&amp;fit=facearea&amp;facepad=3&amp;w=144&amp;h=144" alt="My profile" className="w-6 h-6 rounded-full order-2" />
+                                </div>
                             </div>
-                            <img src="https://images.unsplash.com/photo-1549078642-b2ba4bda0cdb?ixlib=rb-1.2.1&amp;ixid=eyJhcHBfaWQiOjEyMDd9&amp;auto=format&amp;fit=facearea&amp;facepad=3&amp;w=144&amp;h=144" alt="My profile" className="w-6 h-6 rounded-full order-1" />
-                        </div>
-                    </div>
+                        ) : (
+                            <div className="chat-message">
+                                <div className="flex items-end">
+                                    <div className="flex flex-col space-y-1 text-xs max-w-xs mx-2 order-2 items-start">
+                                        <div className="text-xs flex text-gray-500" >
+                                            <span className="text-xs text-gray-500">{(message.name)}</span>
+                                        </div>
+                                        <div className="flex items-end flex-col">
+                                            <span className="px-4 text-sm py-1 rounded-lg inline-block rounded-bl-none bg-gray-300 text-gray-600">{message.message}  </span>
+                                            <span className="text-xs mr-2 text-gray-500">{(message.createdAt)}</span>
+                                        </div>
+                                    </div>
+                                    <img src="https://avatars.githubusercontent.com/u/67522406?v=4" alt="My profile" className="w-6 h-6 rounded-full order-1" />
+                                </div>
 
-                    <div className="chat-message">
-                        <div className="flex items-end justify-end">
-                            <div className="flex flex-col space-y-2 text-xs max-w-xs mx-2 order-1 items-end">
-
-                                <div>
-                                    <span>Payal Patra</span>
-                                    <span className="px-4 py-2 rounded-lg inline-block rounded-br-none bg-blue-600 text-white ">Your error message says permission denied, npm global installs must be given root privileges.
-                                    </span></div>
                             </div>
-                            <img src="https://images.unsplash.com/photo-1590031905470-a1a1feacbb0b?ixlib=rb-1.2.1&amp;ixid=eyJhcHBfaWQiOjEyMDd9&amp;auto=format&amp;fit=facearea&amp;facepad=3&amp;w=144&amp;h=144" alt="My profile" className="w-6 h-6 rounded-full order-2" />
-                        </div>
-                    </div>
+                        )
+                        )
+                    )}
+
                 </div>
+                {succes === false && <p className="text-red-500">Server Error ! Come Back Later</p>}
                 <div className="border-t-2 border-gray-200 px-4 pt-4 mb-2 sm:mb-0">
                     <div className="relative flex">
                         <span className="absolute inset-y-0 flex items-center">
@@ -223,3 +220,5 @@ function DashboardCard07() {
 }
 
 export default DashboardCard07
+
+

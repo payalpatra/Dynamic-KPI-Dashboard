@@ -5,13 +5,11 @@ import { useDispatch, useSelector } from "react-redux";
 import { getAuth as listAuth } from "../../redux/actions/authActions";
 
 
-
-
 function WelcomeBanner() {
   const dispatch = useDispatch();
 
   const getAuth = useSelector((state) => state.getAuth);
-  const { auth, loading } = getAuth;
+  const { auth } = getAuth;
 
   useEffect(() => {
 

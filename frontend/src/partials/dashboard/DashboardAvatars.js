@@ -1,7 +1,5 @@
-import React, { useEffect, useState } from 'react';
-import { useDispatch, useSelector } from "react-redux";
+import React from 'react';
 
-import { getAuth as listAuth } from "../../redux/actions/authActions";
 import { Link } from 'react-router-dom';
 import User01 from '../../images/user-36-01.jpg';
 import User02 from '../../images/user-36-02.jpg';
@@ -11,37 +9,26 @@ import Modal from '../../partials/header/Form';
 
 function DashboardAvatars() {
 
-  const dispatch = useDispatch();
-
-  const getAuth = useSelector((state) => state.getAuth);
-  const { auth } = getAuth;
-
-
-  useEffect(() => {
-
-    dispatch(listAuth());
-
-  }, [dispatch]);
 
   return (
     <ul className="flex flex-wrap justify-center sm:justify-start mb-8 sm:mb-0 -space-x-3 -ml-px">
       <li>
-        <Link className="block" to="/">
+        <Link className="block" to="/dashboard">
           <img className="w-9 h-9 rounded-full" src={User01} width="36" height="36" alt="User 01" />
         </Link>
       </li>
       <li>
-        <Link className="block" to="/">
+        <Link className="block" to="/dashboard">
           <img className="w-9 h-9 rounded-full" src={User02} width="36" height="36" alt="User 02" />
         </Link>
       </li>
       <li>
-        <Link className="block" to="/">
+        <Link className="block" to="/dashboard">
           <img className="w-9 h-9 rounded-full" src={User03} width="36" height="36" alt="User 03" />
         </Link>
       </li>
       <li>
-        <Link className="block" to="/">
+        <Link className="block" to="/dashboard">
           <img className="w-9 h-9 rounded-full" src={User04} width="36" height="36" alt="User 04" />
         </Link>
       </li>

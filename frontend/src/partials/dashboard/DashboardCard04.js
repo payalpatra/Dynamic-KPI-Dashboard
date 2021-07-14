@@ -1,7 +1,4 @@
-import React, { useEffect, useState } from "react";
-import { useDispatch, useSelector } from "react-redux";
-
-import { getAuth as listAuth } from "../../redux/actions/authActions";
+import React from "react";
 
 import BarChart from "../../charts/BarChart01";
 import Pdf from "react-to-pdf";
@@ -13,19 +10,7 @@ const ref = React.createRef();
 // MONTHLY SALES
 function DashboardCard04() {
 
-
-  const dispatch = useDispatch();
-
-  const getAuth = useSelector((state) => state.getAuth);
-  const { auth } = getAuth;
-
-  useEffect(() => {
-    dispatch(listAuth());
-  }, [dispatch]);
-
-
   let Graphs = JSON.parse(localStorage.getItem("graphs"))
-
 
   let ActualSales = Graphs[0].ActualSales
   let TargetSales = Graphs[1].TargetSales

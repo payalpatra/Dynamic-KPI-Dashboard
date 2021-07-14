@@ -1,7 +1,5 @@
 import React, { useEffect } from 'react';
-import { useDispatch, useSelector } from "react-redux";
 
-import { getAuth as listAuth } from "./redux/actions/authActions"
 
 import {
   Switch,
@@ -25,17 +23,6 @@ import Messages from "./pages/Messages"
 
 function App() {
 
-  const dispatch = useDispatch();
-
-  const getAuth = useSelector((state) => state.getAuth);
-  const { auth } = getAuth;
-
-  useEffect(() => {
-    dispatch(listAuth());
-  }, [dispatch]);
-
-
-
   const location = useLocation();
 
   useEffect(() => {
@@ -43,8 +30,7 @@ function App() {
     window.scroll({ top: 0 })
     document.querySelector('html').style.scrollBehavior = ''
     focusHandling('outline');
-  }, [location.pathname]); // triggered on route change
-
+  }, [location.pathname]); 
 
   let Data = [
     { ActualSales: [1600, 900, 1300, 2450, 3700, 4000] },
@@ -79,20 +65,18 @@ function App() {
   }
 
 
-
-  let home =  "/dashboard" 
+  let home = "/dashboard"
   let login = "/login"
   let users = "/users"
   let signup = "/signup"
   let messages = "/messages"
 
 
-
   return (
     <>
       <Switch>
         <Route exact path={home}>
-          <Dashboard  />
+          <Dashboard />
         </Route>
         <Route exact path={login}><Login /></Route>
         <Route exact path="/"><Login /></Route>
