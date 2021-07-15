@@ -5,7 +5,7 @@ organization is doing.This application not only provides information on KPI of t
 create charts instantly and download them in PDF format. In addition to that this application also provides real-time chat facility to pass important information between employees.
  This Application has 2 Roles (User & Admin) which is explained after the Installation Guidelines.
  
- ## Installation Guidlines
+ ## Installation Guidelines
  
 ### STEP 1 
 
@@ -56,4 +56,9 @@ create charts instantly and download them in PDF format. In addition to that thi
 http://localhost:5000/
 ```
 
-
+## User Role
+ This is the default role that is assigned after successful registration.
+ * The User can access the KPI charts as well as download them in PDF format.
+ * The User can Join the Proffessional chat room to get important information.
+ * The User can check the task deadlines and the employee that needs to complete the tasks.
+ 
