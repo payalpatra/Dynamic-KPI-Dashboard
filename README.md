@@ -62,3 +62,10 @@ http://localhost:5000/
  * The User can Join the Proffessional chat room to get important information.
  * The User can check the task deadlines and the employee that needs to complete the tasks.
  
+## Admin Role
+The admin role can be assigned to a user either from changing the role attribute of the user from "User" to "Admin" in the database or an existing admin can assign the Admin role to the user from the application itself.
+* The admin gets all the facilities offer to the User with additional facilities.
+* Admin can add Data for Key Performance Indicators and the charts get updated with new data.
+* Admin can assign tasks to employees with deadline.
+* Admin can also can change the status of the tasks from pending to complete.
+* After the tasks is completed the task is deleted from upcoming deadlines table.
