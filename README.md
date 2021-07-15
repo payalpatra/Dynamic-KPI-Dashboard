@@ -7,33 +7,33 @@ create charts instantly and download them in PDF format. In addition to that thi
  
  ## Installation Guidlines
  
-### STEP 1
+### STEP 1 
 
 ```sh
-  https://github.com/payalpatra/Dynamic-KPI-Dashboard.git
+ git clone https://github.com/payalpatra/Dynamic-KPI-Dashboard.git
 ```
 
-### STEP 2
+### STEP 2 
 
-- #### Note - Run this command in the ROOT directory as well as in the FRONTEND directory.
-- #### cd frontend
+- ##### Note - Run this command in the ROOT directory as well as in the FRONTEND directory.
+- ##### cd frontend
 
 ```sh
    npm install
 ```
 
-### STEP 3
+### STEP 3 
 
-- #### After downloading all the Frontend Dependencies.
-- #### Run this command in the frontend directory
+- ##### After downloading all the Frontend Dependencies.
+- ##### Run this command in the frontend directory
 
 ```sh
    npm run build
 ```
 
-### STEP 4
+### STEP 4 
 
-- #### Note - Create .env file in the root directory with following variables.
+- ##### Create .env file in the root directory with following variables.
 
   ```sh
   PORT = 5000
@@ -42,8 +42,7 @@ create charts instantly and download them in PDF format. In addition to that thi
   ```
 
 ### STEP 5
-
-#### Run this in the root directory
+##### Run this in the root directory
 
 ```sh
  npm start
@@ -51,9 +50,10 @@ create charts instantly and download them in PDF format. In addition to that thi
 
 ### STEP 6
 
-- #### The project will be served in the port 5000 if you have done all the above steps correctly. 🥇
+- ##### The application gets served in the port 5000 if all the above steps correctly are done correctly. 🥇
 
 ```sh
 http://localhost:5000/
 ```
+
 
