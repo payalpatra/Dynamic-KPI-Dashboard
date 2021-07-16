@@ -8,8 +8,8 @@ import { getAuth as listAuth } from "../../redux/actions/authActions";
 
 function DashboardCard10() {
 
-const adminAvtar = "https://www.ummg.edu.mm/Media/English/Staff/person.png"
-const userAvtar = "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR6N5q9d8HiROYfdhFjLs3T1JWP3UJSlIPjsqQ78WCVITAtGq1CzbIn2N9EtR12mFSqVFQ&usqp=CAU"
+  const adminAvtar = "https://www.ummg.edu.mm/Media/English/Staff/person.png"
+  const userAvtar = "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR6N5q9d8HiROYfdhFjLs3T1JWP3UJSlIPjsqQ78WCVITAtGq1CzbIn2N9EtR12mFSqVFQ&usqp=CAU"
 
   const dispatch = useDispatch();
 
@@ -38,7 +38,7 @@ const userAvtar = "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR6N5q9d
         id
       }),
     }).then(Data => {
-      console.log(Data)
+      dispatch(listUsers());
     });
 
 
@@ -86,7 +86,7 @@ const userAvtar = "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR6N5q9d
                       <td className="p-2 whitespace-nowrap">
                         <div className="flex items-center">
                           <div className="w-10 h-10 flex-shrink-0 mr-2 sm:mr-3">
-                            <img className="rounded-full" src={user.role === "Admin" ? adminAvtar : userAvtar  } width="40" height="40" alt={user.fullName} />
+                            <img className="rounded-full" src={user.role === "Admin" ? adminAvtar : userAvtar} width="40" height="40" alt={user.fullName} />
                           </div>
                           <div className="font-medium text-gray-800">{user.fullName}</div>
                         </div>
