@@ -72,3 +72,11 @@ The admin role can be assigned to a user either from changing the role attribute
 * Admin can also can change the status of the tasks from pending to complete.
 * After the tasks is completed the task is deleted from upcoming deadlines table.
 
+## Screenshots
+![User Home Page](https://user-images.githubusercontent.com/67522406/126043669-5f534370-be10-4e27-a1a0-19deb719f620.png)
+![Admin Upcoming Deadlines](https://user-images.githubusercontent.com/67522406/126043818-c2bff0bc-2d9b-4f00-aa2b-18ea9a591ea4.png)
+![Messages](https://user-images.githubusercontent.com/67522406/126043694-524f1659-d39a-4197-a628-07b9d1c6baa5.png)
+![Update Charts](https://user-images.githubusercontent.com/67522406/126043696-11f6d7dc-0f3a-4a72-b86c-0c19819550f6.png)
+![Assign Task](https://user-images.githubusercontent.com/67522406/126043701-c1bdeb13-c1e3-412a-b3e8-827c84a7b72b.png)
+![Admin user section](https://user-images.githubusercontent.com/67522406/126043742-875aa9a5-5c0a-4ffa-bfab-3cc920ab0817.png)
+
