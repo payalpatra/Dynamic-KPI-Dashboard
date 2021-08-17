@@ -18,8 +18,9 @@ import './charts/ChartjsConfig';
 import Dashboard from './pages/Dashboard';
 import Users from "./pages/Users"
 import Login from "./pages/Login";
-import Signup from "./pages/Signup"
-import Messages from "./pages/Messages"
+import Signup from "./pages/Signup";
+import Messages from "./pages/Messages";
+import Profile from "./pages/Customer";
 
 function App() {
 
@@ -30,31 +31,31 @@ function App() {
     window.scroll({ top: 0 })
     document.querySelector('html').style.scrollBehavior = ''
     focusHandling('outline');
-  }, [location.pathname]); 
+  }, [location.pathname]);
 
   let Data = [
     { ActualSales: [1600, 900, 1300, 2450, 3700, 4000] },
     { TargetSales: [2600, 5350, 4800, 5200, 4800, 5000] },
     {
       MLabels: [
-        "01-01-2021",
         "02-01-2021",
         "03-01-2021",
         "04-01-2021",
         "05-01-2021",
         "06-01-2021",
+        "07-01-2021",
       ],
     },
     { CapexData: [9200, 6600, 8800, 5200, 9200, 6600] },
     { DividendsData: [2600, 5350, 4000, 7500, 2000, 1700] },
     {
       Clabels: [
-        "01-01-2021",
         "02-01-2021",
         "03-01-2021",
         "04-01-2021",
         "05-01-2021",
         "06-01-2021",
+        "07-01-2021",
       ],
     },
     { customerSatisfaction: ["60", "30", "20"] },
@@ -70,6 +71,7 @@ function App() {
   let users = "/users"
   let signup = "/signup"
   let messages = "/messages"
+  let profile = "/customers"
 
 
   return (
@@ -83,6 +85,7 @@ function App() {
         <Route exact path={users}><Users /></Route>
         <Route exact path={signup}><Signup /></Route>
         <Route exact path={messages}><Messages /></Route>
+        <Route exact path={profile}><Profile /></Route>
 
       </Switch>
     </>

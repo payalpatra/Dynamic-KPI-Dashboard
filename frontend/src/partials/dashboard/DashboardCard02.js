@@ -110,7 +110,6 @@ function DashboardCard02() {
         ActualSales.push(Data1);
         TargetSales.pop()
         TargetSales.push(Data2);
-        console.log("unsuccesfull atempt");
       } else {
         ActualSales.push(Data1);
         TargetSales.push(Data2);

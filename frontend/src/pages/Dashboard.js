@@ -54,7 +54,7 @@ function Dashboard() {
                 {/* Add view button */}
                 {auth.role === "Admin" ? (
                   <button className="btn bg-indigo-500 hover:bg-indigo-600 text-white">
-                    <span className="hidden xs:block ml-2">Add Charts </span>
+                    <span className="hidden xs:block ml-2">Update Charts </span>
                     <DropdownModal />
                   </button>
                 ) : (

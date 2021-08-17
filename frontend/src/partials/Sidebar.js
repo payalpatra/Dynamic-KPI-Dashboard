@@ -87,26 +87,39 @@ function Sidebar({
           <h3 className="text-xs uppercase text-gray-500 font-semibold pl-3">Welcome !</h3>
           <ul className="mt-3">
             {/* Dashboard */}
-            <li className={`px-3 py-2 rounded-sm mb-0.5 last:mb-0 ${page === '' && 'bg-gray-900'}`}>
-              <NavLink exact to="/dashboard" className={`block text-gray-200 hover:text-white transition duration-150 ${page === '' && 'hover:text-gray-200'}`}>
+            <li className={`px-3 py-2 rounded-sm mb-0.5 last:mb-0 ${page === 'dashboard' && 'bg-gray-900'}`}>
+              <NavLink exact to="/dashboard" className={`block text-gray-200 hover:text-white transition duration-150 ${page === 'dashboard' && 'hover:text-gray-200'}`}>
                 <div className="flex flex-grow">
                   <svg className="flex-shrink-0 h-6 w-6 mr-3" viewBox="0 0 24 24">
-                    <path className={`fill-current text-gray-400 ${page === '' && 'text-indigo-500'}`} d="M12 0C5.383 0 0 5.383 0 12s5.383 12 12 12 12-5.383 12-12S18.617 0 12 0z" />
-                    <path className={`fill-current text-gray-600 ${page === '' && 'text-indigo-600'}`} d="M12 3c-4.963 0-9 4.037-9 9s4.037 9 9 9 9-4.037 9-9-4.037-9-9-9z" />
-                    <path className={`fill-current text-gray-400 ${page === '' && 'text-indigo-200'}`} d="M12 15c-1.654 0-3-1.346-3-3 0-.462.113-.894.3-1.285L6 6l4.714 3.301A2.973 2.973 0 0112 9c1.654 0 3 1.346 3 3s-1.346 3-3 3z" />
+                    <path className={`fill-current text-gray-400 ${page === 'dashboard' && 'text-indigo-500'}`} d="M12 0C5.383 0 0 5.383 0 12s5.383 12 12 12 12-5.383 12-12S18.617 0 12 0z" />
+                    <path className={`fill-current text-gray-600 ${page === 'dashboard' && 'text-indigo-600'}`} d="M12 3c-4.963 0-9 4.037-9 9s4.037 9 9 9 9-4.037 9-9-4.037-9-9-9z" />
+                    <path className={`fill-current text-gray-400 ${page === 'dashboard' && 'text-indigo-200'}`} d="M12 15c-1.654 0-3-1.346-3-3 0-.462.113-.894.3-1.285L6 6l4.714 3.301A2.973 2.973 0 0112 9c1.654 0 3 1.346 3 3s-1.346 3-3 3z" />
                   </svg>
                   <span className="text-sm font-medium">Dashboard</span>
                 </div>
               </NavLink>
             </li>
 
-            {/* Mesages */}
+            {/* Customers */}
             <li className={`px-3 py-2 rounded-sm mb-0.5 last:mb-0 ${page === 'customers' && 'bg-gray-900'}`}>
-              <NavLink exact to="/messages" className={`block text-gray-200 hover:text-white transition duration-150 ${page === 'customers' && 'hover:text-gray-200'}`}>
+              <NavLink exact to="/customers" className={`block text-gray-200 hover:text-white transition duration-150 ${page === 'customers' && 'hover:text-gray-200'}`}>
                 <div className="flex flex-grow">
                   <svg className="flex-shrink-0 h-6 w-6 mr-3" viewBox="0 0 24 24">
                     <path className={`fill-current text-gray-400 ${page === 'customers' && 'text-indigo-300'}`} d="M7 0l6 7H8v10H6V7H1z" />
                     <path className={`fill-current text-gray-600 ${page === 'customers' && 'text-indigo-500'}`} d="M18 7v10h5l-6 7-6-7h5V7z" />
+                  </svg>
+                  <span className="text-sm font-medium">Customers</span>
+                </div>
+              </NavLink>
+            </li>
+
+            {/* Mesages */}
+            <li className={`px-3 py-2 rounded-sm mb-0.5 last:mb-0 ${page === 'messages' && 'bg-gray-900'}`}>
+              <NavLink exact to="/messages" className={`block text-gray-200 hover:text-white transition duration-150 ${page === 'messages' && 'hover:text-gray-200'}`}>
+                <div className="flex flex-grow">
+                  <svg className="flex-shrink-0 h-6 w-6 mr-3" viewBox="0 0 24 24">
+                    <path className={`fill-current text-gray-400 ${page === 'messages' && 'text-indigo-300'}`} d="M7 0l6 7H8v10H6V7H1z" />
+                    <path className={`fill-current text-gray-600 ${page === 'messages' && 'text-indigo-500'}`} d="M18 7v10h5l-6 7-6-7h5V7z" />
                   </svg>
                   <span className="text-sm font-medium">Messages</span>
                 </div>
@@ -114,12 +127,12 @@ function Sidebar({
             </li>
 
             {/* Users */}
-            <li className={`px-3 py-2 rounded-sm mb-0.5 last:mb-0 ${page === 'customers' && 'bg-gray-900'}`}>
-              <NavLink exact to="/users" className={`block text-gray-200 hover:text-white transition duration-150 ${page === 'customers' && 'hover:text-gray-200'}`}>
+            <li className={`px-3 py-2 rounded-sm mb-0.5 last:mb-0 ${page === 'users' && 'bg-gray-900'}`}>
+              <NavLink exact to="/users" className={`block text-gray-200 hover:text-white transition duration-150 ${page === 'users' && 'hover:text-gray-200'}`}>
                 <div className="flex flex-grow">
                   <svg className="flex-shrink-0 h-6 w-6 mr-3" viewBox="0 0 24 24">
-                    <path className={`fill-current text-gray-400 ${page === 'customers' && 'text-indigo-300'}`} d="M7 0l6 7H8v10H6V7H1z" />
-                    <path className={`fill-current text-gray-600 ${page === 'customers' && 'text-indigo-500'}`} d="M18 7v10h5l-6 7-6-7h5V7z" />
+                    <path className={`fill-current text-gray-400 ${page === 'users' && 'text-indigo-300'}`} d="M7 0l6 7H8v10H6V7H1z" />
+                    <path className={`fill-current text-gray-600 ${page === 'users' && 'text-indigo-500'}`} d="M18 7v10h5l-6 7-6-7h5V7z" />
                   </svg>
                   <span className="text-sm font-medium">Users</span>
                 </div>
@@ -127,12 +140,12 @@ function Sidebar({
             </li>
 
             {/* Login */}
-            <li className={`px-3 py-2 rounded-sm mb-0.5 last:mb-0 ${page === 'campaigns' && 'bg-gray-900'}`}>
-              <NavLink exact to="/login" className={`block text-gray-200 hover:text-white transition duration-150 ${page === 'campaigns' && 'hover:text-gray-200'}`}>
+            <li className={`px-3 py-2 rounded-sm mb-0.5 last:mb-0 ${page === 'login' && 'bg-gray-900'}`}>
+              <NavLink exact to="/login" className={`block text-gray-200 hover:text-white transition duration-150 ${page === 'login' && 'hover:text-gray-200'}`}>
                 <div className="flex flex-grow">
                   <svg className="flex-shrink-0 h-6 w-6 mr-3" viewBox="0 0 24 24">
-                    <path className={`fill-current text-gray-600 ${page === 'campaigns' && 'text-indigo-500'}`} d="M20 7a.75.75 0 01-.75-.75 1.5 1.5 0 00-1.5-1.5.75.75 0 110-1.5 1.5 1.5 0 001.5-1.5.75.75 0 111.5 0 1.5 1.5 0 001.5 1.5.75.75 0 110 1.5 1.5 1.5 0 00-1.5 1.5A.75.75 0 0120 7zM4 23a.75.75 0 01-.75-.75 1.5 1.5 0 00-1.5-1.5.75.75 0 110-1.5 1.5 1.5 0 001.5-1.5.75.75 0 111.5 0 1.5 1.5 0 001.5 1.5.75.75 0 110 1.5 1.5 1.5 0 00-1.5 1.5A.75.75 0 014 23z" />
-                    <path className={`fill-current text-gray-400 ${page === 'campaigns' && 'text-indigo-300'}`} d="M17 23a1 1 0 01-1-1 4 4 0 00-4-4 1 1 0 010-2 4 4 0 004-4 1 1 0 012 0 4 4 0 004 4 1 1 0 010 2 4 4 0 00-4 4 1 1 0 01-1 1zM7 13a1 1 0 01-1-1 4 4 0 00-4-4 1 1 0 110-2 4 4 0 004-4 1 1 0 112 0 4 4 0 004 4 1 1 0 010 2 4 4 0 00-4 4 1 1 0 01-1 1z" />
+                    <path className={`fill-current text-gray-600 ${page === 'login' && 'text-indigo-500'}`} d="M20 7a.75.75 0 01-.75-.75 1.5 1.5 0 00-1.5-1.5.75.75 0 110-1.5 1.5 1.5 0 001.5-1.5.75.75 0 111.5 0 1.5 1.5 0 001.5 1.5.75.75 0 110 1.5 1.5 1.5 0 00-1.5 1.5A.75.75 0 0120 7zM4 23a.75.75 0 01-.75-.75 1.5 1.5 0 00-1.5-1.5.75.75 0 110-1.5 1.5 1.5 0 001.5-1.5.75.75 0 111.5 0 1.5 1.5 0 001.5 1.5.75.75 0 110 1.5 1.5 1.5 0 00-1.5 1.5A.75.75 0 014 23z" />
+                    <path className={`fill-current text-gray-400 ${page === 'login' && 'text-indigo-300'}`} d="M17 23a1 1 0 01-1-1 4 4 0 00-4-4 1 1 0 010-2 4 4 0 004-4 1 1 0 012 0 4 4 0 004 4 1 1 0 010 2 4 4 0 00-4 4 1 1 0 01-1 1zM7 13a1 1 0 01-1-1 4 4 0 00-4-4 1 1 0 110-2 4 4 0 004-4 1 1 0 112 0 4 4 0 004 4 1 1 0 010 2 4 4 0 00-4 4 1 1 0 01-1 1z" />
                   </svg>
                   <span className="text-sm font-medium">Login</span>
                 </div>
