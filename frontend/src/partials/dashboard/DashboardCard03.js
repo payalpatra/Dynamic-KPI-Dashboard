@@ -50,7 +50,7 @@ function DashboardCard03() {
                     employee, task, deadline
                 }),
             }).then((Data) => {
-                console.log(Data);
+
                 setSuccess(true);
             });
         }
@@ -66,7 +66,6 @@ function DashboardCard03() {
             "task": "",
             "deadline": "",
         })
-        console.log(data);
     };
 
     return (auth.role === "Admin" &&

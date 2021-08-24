@@ -59,7 +59,6 @@ function DashboardCard07() {
             "message": Message.message,
             "name": auth.fullName,
         }
-        console.log(MESSAGE)
 
         if (!MESSAGE.name || !MESSAGE.message) {
             setMessage({
@@ -67,7 +66,6 @@ function DashboardCard07() {
             })
 
         } else {
-            console.log("It works but not")
             const response = fetch("/api/message/addMessage", {
                 method: "POST",
                 headers: {
@@ -75,7 +73,6 @@ function DashboardCard07() {
                 },
                 body: JSON.stringify(MESSAGE)
             }).then((Data) => {
-                console.log(Data)
                 if (Data) {
                     dispatch(listMessages())
                 } else {
@@ -88,7 +85,6 @@ function DashboardCard07() {
             setMessage({
                 "message": "",
             })
-            console.log(response)
         }
 
     }

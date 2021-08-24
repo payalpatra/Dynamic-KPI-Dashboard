@@ -22,8 +22,6 @@ function DashboardCard08() {
         dispatch(listAuth());
     }, [dispatch]);
 
-    console.log(customers)
-
 
     const changeStatus = async (e) => {
 
@@ -42,57 +40,6 @@ function DashboardCard08() {
         });
 
     }
-
-
-
-    const customerss = [
-        {
-            id: '0',
-            company: 'Company A',
-            name: 'Alex Shatov',
-            email: 'alexshatov@gmail.com',
-            title: "Purchaching Manager",
-            status: "In Progress",
-            amount: '$2,890.66',
-        },
-        {
-            id: '1',
-            company: 'Company B',
-            name: 'Philip Harbach',
-            email: 'philip.h@gmail.com',
-            title: "Accounting Assistant",
-            status: "In Progress",
-            amount: '$2,767.04',
-        },
-        {
-            id: '2',
-            company: 'Company C',
-            name: 'Mirko Fisuk',
-            email: 'mirkofisuk@gmail.com',
-            title: "Accounting Assistant",
-            status: "In Progress",
-            amount: '$2,996.00',
-        },
-        {
-            id: '3',
-            company: 'Company D',
-            name: 'Olga Semklo',
-            email: 'olga.s@cool.design',
-            title: "Owner",
-            status: "Completed",
-            amount: '$1,220.66',
-        },
-        {
-            id: '4',
-            company: 'Company E',
-            name: 'Burak Long',
-            email: 'longburak@gmail.com',
-            title: "Owner",
-            status: "Completed",
-            amount: '$1,890.66',
-        },
-    ];
-
 
 
     return (

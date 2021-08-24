@@ -59,7 +59,6 @@ function Loginn() {
                 }),
             }).then(Data => {
                 dispatch(listAuth());
-                console.log(auth.role)
                 if (Data.status === 200 && auth.role !== undefined) {
                     setSuccess(true);
                     setHome(true);
@@ -67,7 +66,6 @@ function Loginn() {
                     setFail(true)
                 }
             });
-            console.log(response)
         }
 
 

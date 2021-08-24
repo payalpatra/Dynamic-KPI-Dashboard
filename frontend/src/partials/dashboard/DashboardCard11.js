@@ -54,7 +54,6 @@ function DashboardCard11() {
                     company, name, email, title, amount,
                 }),
             }).then((Data) => {
-                console.log(Data);
                 setSuccess(true);
             });
         }
@@ -72,7 +71,6 @@ function DashboardCard11() {
             title: "",
             amount: '',
         })
-        console.log(data);
     };
 
 
